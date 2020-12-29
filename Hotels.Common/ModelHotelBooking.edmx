@@ -1,0 +1,1252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotelBookingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AvailabilityRes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sid" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="BookingNum" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="OldTotalcost" Type="float" />
+          <Property Name="NewTotalcost" Type="float" />
+          <Property Name="TotalsellPrice" Type="float" />
+          <Property Name="SellCurrency" Type="nchar" MaxLength="10" />
+          <Property Name="PID" Type="nchar" MaxLength="10" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="hotelCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AvailabilityRoom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomCode" Type="nchar" MaxLength="10" />
+          <Property Name="RoomRef" Type="nvarchar(max)" />
+          <Property Name="Sid" Type="nvarchar" MaxLength="255" />
+          <Property Name="BookingNum" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="availabilityRoomRes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingNum" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sid" Type="nvarchar" MaxLength="255" />
+          <Property Name="RoomCode" Type="int" />
+          <Property Name="RoomRef" Type="nvarchar(max)" />
+          <Property Name="Pid" Type="nchar" MaxLength="10" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="SellPrice" Type="float" />
+          <Property Name="Courrency" Type="nchar" MaxLength="10" />
+          <Property Name="roomId" Type="int" />
+        </EntityType>
+        <EntityType Name="BookingConfirmationData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reference" Type="nvarchar(max)" />
+          <Property Name="ClientReference" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="HolderFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HolderLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalPrice" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Currency" Type="nchar" MaxLength="10" />
+          <Property Name="ProviderCurrency" Type="nchar" MaxLength="10" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="supplerReference" Type="nvarchar" MaxLength="50" />
+          <Property Name="SessionID" Type="nvarchar(max)" />
+          <Property Name="BookingNum" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BookingPriceChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellPrice" Type="float" />
+          <Property Name="Currency" Type="nchar" MaxLength="10" />
+          <Property Name="TotalCost" Type="float" />
+          <Property Name="MarkUpId" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarkUpVal" Type="float" />
+          <Property Name="DiscountID" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiscountVal" Type="float" />
+        </EntityType>
+        <EntityType Name="CancellationBooking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reference" Type="nvarchar" MaxLength="250" />
+          <Property Name="CancellationReference" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClientReference" Type="nvarchar" MaxLength="250" />
+          <Property Name="creationDate" Type="nvarchar" MaxLength="250" />
+          <Property Name="Cancelstatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="creationUser" Type="nvarchar" MaxLength="250" />
+          <Property Name="HolderFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HolderLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="checkOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="checkIn" Type="nvarchar" MaxLength="50" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="totalNet" Type="nvarchar" MaxLength="50" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="CancellationAmount" Type="nvarchar" MaxLength="50" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VatNumber" Type="nvarchar" MaxLength="250" />
+          <Property Name="InvoiceCompany" Type="nvarchar" MaxLength="250" />
+          <Property Name="InvoiceCompanyCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyregistrationNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingTotalNet" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingCurrency" Type="nchar" MaxLength="10" />
+          <Property Name="cancellationFlag" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingNum" Type="nvarchar(max)" />
+          <Property Name="BookingReference" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="CancellationRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingNum" Type="nvarchar" MaxLength="250" />
+          <Property Name="reference" Type="nvarchar" MaxLength="250" />
+          <Property Name="RoomStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="250" />
+          <Property Name="supplierReference" Type="nvarchar" MaxLength="250" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" />
+          <Property Name="rateClass" Type="nvarchar" MaxLength="50" />
+          <Property Name="net" Type="nchar" MaxLength="10" />
+          <Property Name="hotelMandatory" Type="nvarchar" MaxLength="50" />
+          <Property Name="boardName" Type="nvarchar" MaxLength="250" />
+          <Property Name="adults" Type="nvarchar" MaxLength="50" />
+          <Property Name="children" Type="nvarchar" MaxLength="50" />
+          <Property Name="Paxes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CancelPolicy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomCode" Type="int" />
+          <Property Name="Sid" Type="nvarchar" MaxLength="255" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="ProviderID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="SellPrice" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="Currency" Type="nchar" MaxLength="10" />
+          <Property Name="ProviderCurrency" Type="nchar" MaxLength="10" />
+          <Property Name="MarkupId" Type="int" />
+          <Property Name="MarkupVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DisCountID" Type="int" />
+          <Property Name="DisCountVal" Type="decimal" Precision="18" Scale="2" />
+<Property Name="ChargeType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CheckAvailabiltyReq">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SID" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Pid" Type="nchar" MaxLength="10" />
+          <Property Name="BookinNum" Type="nvarchar" MaxLength="255" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalCost" Type="float" />
+          <Property Name="CreateAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ConfirmationRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingNum" Type="nvarchar(max)" />
+          <Property Name="Sessionid" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer User ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="First Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Last Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Country" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Date Of Birth" Type="date" />
+          <Property Name="Passport No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salutations" Type="nvarchar" MaxLength="50" />
+          <Property Name="Passport Expiration Date" Type="date" />
+        </EntityType>
+        <EntityType Name="HotelBookingCustomerCancelation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="Room_No" Type="int" />
+          <Property Name="Date_From" Type="date" />
+          <Property Name="Date_To" Type="date" />
+          <Property Name="Amend_Restriction" Type="varchar" MaxLength="50" />
+          <Property Name="Cancel_Restriction" Type="varchar" MaxLength="50" />
+          <Property Name="Cancel_Amount" Type="float" />
+          <Property Name="Customer_Cancel_Amount" Type="float" />
+          <Property Name="No_Show_Amount" Type="float" />
+          <Property Name="Rule_Text" Type="text" />
+          <Property Name="Markup_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Markup_Amount" Type="float" />
+        </EntityType>
+        <EntityType Name="HotelBookingDelivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="Sid" Type="nvarchar" MaxLength="255" />
+          <Property Name="DeliveryId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerPhoneCode" Type="nchar" MaxLength="50" />
+          <Property Name="CustomerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingTime" Type="datetime" Nullable="false" />
+          <Property Name="BookingStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="DeliveryStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="DeliveryCost" Type="float" />
+        </EntityType>
+        <EntityType Name="HotelBookingNights">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="NightDate" Type="date" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Currency" Type="varchar" MaxLength="50" />
+          <Property Name="Room_No" Type="int" />
+          <Property Name="Exchange_Rate" Type="float" />
+        </EntityType>
+        <EntityType Name="HotelBookingNums">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SearchID" Type="nvarchar(max)" />
+          <Property Name="CaptureDateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HotelBookingPaxs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SID" Type="varchar" MaxLength="255" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="Room_No" Type="int" />
+          <Property Name="Pax_Type" Type="varchar" MaxLength="50" />
+          <Property Name="First_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salutations" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaxNo" Type="int" />
+          <Property Name="RoomRef" Type="int" />
+          <Property Name="Lead" Type="bit" />
+        </EntityType>
+        <EntityType Name="HotelBookingRooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="PID" Type="int" />
+          <Property Name="SID" Type="varchar" MaxLength="255" />
+          <Property Name="Room_No" Type="int" />
+          <Property Name="Room_Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Room_Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Meal" Type="nvarchar" MaxLength="250" />
+          <Property Name="Special_Request" Type="nvarchar(max)" />
+          <Property Name="Paxs_Qty" Type="int" />
+          <Property Name="IsNonRefundable" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="HotelBookingRoomsStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="nvarchar" MaxLength="250" />
+          <Property Name="Room_No" Type="int" />
+          <Property Name="Room_Status" Type="int" />
+          <Property Name="Agent_Id" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="HotelBookingRoomStatusValues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelBookingStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="Booking_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Status_Time" Type="datetime" />
+          <Property Name="Agent_Id" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remark" Type="text" />
+          <Property Name="Comment" Type="text" />
+        </EntityType>
+        <EntityType Name="HotelBookingStatusValues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelsBooking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Booking_No" Type="varchar" MaxLength="255" />
+          <Property Name="SessionId" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="HotelProviderID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hotel_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Rooms_Qty" Type="int" />
+          <Property Name="Pax_Qty" Type="int" />
+          <Property Name="Booking_Time" Type="datetime" />
+          <Property Name="Booking_Status" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Provider_ID" Type="varchar" MaxLength="50" />
+          <Property Name="Sell_Price" Type="float" />
+          <Property Name="Sell_Currency" Type="varchar" MaxLength="50" />
+          <Property Name="Booking_Phone_Code" Type="nvarchar" MaxLength="20" />
+          <Property Name="Booking_phone" Type="varchar" MaxLength="50" />
+          <Property Name="Booking_Email" Type="varchar" MaxLength="50" />
+          <Property Name="Booking_Conf" Type="varchar" MaxLength="50" />
+          <Property Name="HotelConfirmationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pax_Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Foreign_Amount" Type="float" />
+          <Property Name="Total_Cost_Main_Currency" Type="float" />
+          <Property Name="PromoCode_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="PromoCode_Amount" Type="float" />
+          <Property Name="Sales_Channel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Form_Of_Payment" Type="int" />
+          <Property Name="NotificationKey" Type="nvarchar(max)" />
+          <Property Name="voucherPdf" Type="nvarchar(max)" />
+          <Property Name="InvoicePdf" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageCode" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="PointsOfSale">
+          <Key>
+            <PropertyRef Name="POSID" />
+          </Key>
+          <Property Name="POSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="60" />
+          <Property Name="NameCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="Code" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SourceTraffics">
+          <Key>
+            <PropertyRef Name="SourceID" />
+          </Key>
+          <Property Name="SourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HotelBookingDBModelStoreContainer">
+          <EntitySet Name="AvailabilityRes" EntityType="Self.AvailabilityRes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvailabilityRoom" EntityType="Self.AvailabilityRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="availabilityRoomRes" EntityType="Self.availabilityRoomRes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingConfirmationData" EntityType="Self.BookingConfirmationData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingPriceChange" EntityType="Self.BookingPriceChange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CancellationBooking" EntityType="Self.CancellationBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CancellationRoom" EntityType="Self.CancellationRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CancelPolicy" EntityType="Self.CancelPolicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckAvailabiltyReq" EntityType="Self.CheckAvailabiltyReq" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfirmationRequest" EntityType="Self.ConfirmationRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingCustomerCancelation" EntityType="Self.HotelBookingCustomerCancelation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingDelivery" EntityType="Self.HotelBookingDelivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingNights" EntityType="Self.HotelBookingNights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingNums" EntityType="Self.HotelBookingNums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingPaxs" EntityType="Self.HotelBookingPaxs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingRooms" EntityType="Self.HotelBookingRooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingRoomsStatus" EntityType="Self.HotelBookingRoomsStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingRoomStatusValues" EntityType="Self.HotelBookingRoomStatusValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingStatus" EntityType="Self.HotelBookingStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelBookingStatusValues" EntityType="Self.HotelBookingStatusValues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsBooking" EntityType="Self.HotelsBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PointsOfSale" EntityType="Self.PointsOfSale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SourceTraffics" EntityType="Self.SourceTraffics" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelBookingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AvailabilityRe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BookingNum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="OldTotalcost" Type="Double" />
+          <Property Name="NewTotalcost" Type="Double" />
+          <Property Name="TotalsellPrice" Type="Double" />
+          <Property Name="SellCurrency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="hotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AvailabilityRoom">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="RoomRef" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BookingNum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="availabilityRoomRe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingNum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RoomCode" Type="Int32" />
+          <Property Name="RoomRef" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="SellPrice" Type="Double" />
+          <Property Name="Courrency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="roomId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BookingConfirmationData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientReference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HolderFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HolderLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProviderCurrency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="supplerReference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BookingNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BookingPriceChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellPrice" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TotalCost" Type="Double" />
+          <Property Name="MarkUpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarkUpVal" Type="Double" />
+          <Property Name="DiscountID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountVal" Type="Double" />
+        </EntityType>
+        <EntityType Name="CancellationBooking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CancellationReference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClientReference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="creationDate" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Cancelstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="creationUser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HolderFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HolderLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="checkOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="checkIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="totalNet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CancellationAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VatNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceCompany" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceCompanyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyregistrationNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingTotalNet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingCurrency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cancellationFlag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BookingReference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CancellationRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingNum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="reference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="RoomStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="supplierReference" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rateClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="net" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="hotelMandatory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="boardName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="adults" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="children" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Paxes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CancelPolicy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomCode" Type="Int32" />
+          <Property Name="Sid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="ProviderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="SellPrice" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProviderCurrency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MarkupId" Type="Int32" />
+          <Property Name="MarkupVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DisCountID" Type="Int32" />
+          <Property Name="DisCountVal" Type="Decimal" Precision="18" Scale="2" />
+         <Property Name="ChargeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CheckAvailabiltyReq">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="BookinNum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalCost" Type="Double" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ConfirmationRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sessionid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_User_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Passport_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salutations" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passport_Expiration_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="HotelBookingCustomerCancelation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Room_No" Type="Int32" />
+          <Property Name="Date_From" Type="DateTime" Precision="0" />
+          <Property Name="Date_To" Type="DateTime" Precision="0" />
+          <Property Name="Amend_Restriction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cancel_Restriction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cancel_Amount" Type="Double" />
+          <Property Name="Customer_Cancel_Amount" Type="Double" />
+          <Property Name="No_Show_Amount" Type="Double" />
+          <Property Name="Rule_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Markup_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Markup_Amount" Type="Double" />
+        </EntityType>
+        <EntityType Name="HotelBookingDelivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPhoneCode" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BookingStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryCost" Type="Double" />
+        </EntityType>
+        <EntityType Name="HotelBookingNight">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NightDate" Type="DateTime" Precision="0" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Room_No" Type="Int32" />
+          <Property Name="Exchange_Rate" Type="Double" />
+        </EntityType>
+        <EntityType Name="HotelBookingNum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SearchID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CaptureDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelBookingPax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Room_No" Type="Int32" />
+          <Property Name="Pax_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salutations" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaxNo" Type="Int32" />
+          <Property Name="RoomRef" Type="Int32" />
+<Property Name="Lead" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="HotelBookingRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PID" Type="Int32" />
+          <Property Name="SID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Room_No" Type="Int32" />
+          <Property Name="Room_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Room_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Meal" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Special_Request" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Paxs_Qty" Type="Int32" />
+          <Property Name="IsNonRefundable" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelBookingRoomsStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Room_No" Type="Int32" />
+          <Property Name="Room_Status" Type="Int32" />
+          <Property Name="Agent_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelBookingRoomStatusValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelBookingStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Booking_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status_Time" Type="DateTime" Precision="3" />
+          <Property Name="Agent_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelBookingStatusValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelsBooking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Booking_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SessionId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HotelProviderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hotel_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rooms_Qty" Type="Int32" />
+          <Property Name="Pax_Qty" Type="Int32" />
+          <Property Name="Booking_Time" Type="DateTime" Precision="3" />
+          <Property Name="Booking_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Provider_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sell_Price" Type="Double" />
+          <Property Name="Sell_Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Booking_Phone_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Booking_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Booking_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Booking_Conf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HotelConfirmationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pax_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Foreign_Amount" Type="Double" />
+          <Property Name="Total_Cost_Main_Currency" Type="Double" />
+          <Property Name="PromoCode_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PromoCode_Amount" Type="Double" />
+          <Property Name="Sales_Channel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Form_Of_Payment" Type="Int32" />
+          <Property Name="NotificationKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="voucherPdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InvoicePdf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageID" />
+          </Key>
+          <Property Name="LanguageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PointsOfSale">
+          <Key>
+            <PropertyRef Name="POSID" />
+          </Key>
+          <Property Name="POSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="NameCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SourceTraffic">
+          <Key>
+            <PropertyRef Name="SourceID" />
+          </Key>
+          <Property Name="SourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HotelBookingDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AvailabilityRes" EntityType="Self.AvailabilityRe" />
+          <EntitySet Name="AvailabilityRooms" EntityType="Self.AvailabilityRoom" />
+          <EntitySet Name="availabilityRoomRes" EntityType="Self.availabilityRoomRe" />
+          <EntitySet Name="BookingConfirmationDatas" EntityType="Self.BookingConfirmationData" />
+          <EntitySet Name="BookingPriceChanges" EntityType="Self.BookingPriceChange" />
+          <EntitySet Name="CancellationBookings" EntityType="Self.CancellationBooking" />
+          <EntitySet Name="CancellationRooms" EntityType="Self.CancellationRoom" />
+          <EntitySet Name="CancelPolicies" EntityType="Self.CancelPolicy" />
+          <EntitySet Name="CheckAvailabiltyReqs" EntityType="Self.CheckAvailabiltyReq" />
+          <EntitySet Name="ConfirmationRequests" EntityType="Self.ConfirmationRequest" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="HotelBookingCustomerCancelations" EntityType="Self.HotelBookingCustomerCancelation" />
+          <EntitySet Name="HotelBookingDeliveries" EntityType="Self.HotelBookingDelivery" />
+          <EntitySet Name="HotelBookingNights" EntityType="Self.HotelBookingNight" />
+          <EntitySet Name="HotelBookingNums" EntityType="Self.HotelBookingNum" />
+          <EntitySet Name="HotelBookingPaxs" EntityType="Self.HotelBookingPax" />
+          <EntitySet Name="HotelBookingRooms" EntityType="Self.HotelBookingRoom" />
+          <EntitySet Name="HotelBookingRoomsStatus" EntityType="Self.HotelBookingRoomsStatu" />
+          <EntitySet Name="HotelBookingRoomStatusValues" EntityType="Self.HotelBookingRoomStatusValue" />
+          <EntitySet Name="HotelBookingStatus" EntityType="Self.HotelBookingStatu" />
+          <EntitySet Name="HotelBookingStatusValues" EntityType="Self.HotelBookingStatusValue" />
+          <EntitySet Name="HotelsBookings" EntityType="Self.HotelsBooking" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="PointsOfSales" EntityType="Self.PointsOfSale" />
+          <EntitySet Name="SourceTraffics" EntityType="Self.SourceTraffic" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelBookingDBModelStoreContainer" CdmEntityContainer="HotelBookingDBEntities">
+          <EntitySetMapping Name="AvailabilityRes">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.AvailabilityRe">
+              <MappingFragment StoreEntitySet="AvailabilityRes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OldTotalcost" ColumnName="OldTotalcost" />
+                <ScalarProperty Name="NewTotalcost" ColumnName="NewTotalcost" />
+                <ScalarProperty Name="TotalsellPrice" ColumnName="TotalsellPrice" />
+                <ScalarProperty Name="SellCurrency" ColumnName="SellCurrency" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="hotelCode" ColumnName="hotelCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AvailabilityRooms">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.AvailabilityRoom">
+              <MappingFragment StoreEntitySet="AvailabilityRoom">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="RoomRef" ColumnName="RoomRef" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="availabilityRoomRes">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.availabilityRoomRe">
+              <MappingFragment StoreEntitySet="availabilityRoomRes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="RoomRef" ColumnName="RoomRef" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Courrency" ColumnName="Courrency" />
+                <ScalarProperty Name="roomId" ColumnName="roomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingConfirmationDatas">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.BookingConfirmationData">
+              <MappingFragment StoreEntitySet="BookingConfirmationData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HolderFirstName" ColumnName="HolderFirstName" />
+                <ScalarProperty Name="HolderLastName" ColumnName="HolderLastName" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ProviderCurrency" ColumnName="ProviderCurrency" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="supplerReference" ColumnName="supplerReference" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingPriceChanges">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.BookingPriceChange">
+              <MappingFragment StoreEntitySet="BookingPriceChange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="MarkUpId" ColumnName="MarkUpId" />
+                <ScalarProperty Name="MarkUpVal" ColumnName="MarkUpVal" />
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="DiscountVal" ColumnName="DiscountVal" />
+         
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CancellationBookings">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.CancellationBooking">
+              <MappingFragment StoreEntitySet="CancellationBooking">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="CancellationReference" ColumnName="CancellationReference" />
+                <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="Cancelstatus" ColumnName="Cancelstatus" />
+                <ScalarProperty Name="creationUser" ColumnName="creationUser" />
+                <ScalarProperty Name="HolderFirstName" ColumnName="HolderFirstName" />
+                <ScalarProperty Name="HolderLastName" ColumnName="HolderLastName" />
+                <ScalarProperty Name="checkOut" ColumnName="checkOut" />
+                <ScalarProperty Name="checkIn" ColumnName="checkIn" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="totalNet" ColumnName="totalNet" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="CancellationAmount" ColumnName="CancellationAmount" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+                <ScalarProperty Name="InvoiceCompany" ColumnName="InvoiceCompany" />
+                <ScalarProperty Name="InvoiceCompanyCode" ColumnName="InvoiceCompanyCode" />
+                <ScalarProperty Name="CompanyregistrationNum" ColumnName="CompanyregistrationNum" />
+                <ScalarProperty Name="BookingTotalNet" ColumnName="BookingTotalNet" />
+                <ScalarProperty Name="BookingCurrency" ColumnName="BookingCurrency" />
+                <ScalarProperty Name="cancellationFlag" ColumnName="cancellationFlag" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+                <ScalarProperty Name="BookingReference" ColumnName="BookingReference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CancellationRooms">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.CancellationRoom">
+              <MappingFragment StoreEntitySet="CancellationRoom">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="RoomStatus" ColumnName="RoomStatus" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="supplierReference" ColumnName="supplierReference" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="rateClass" ColumnName="rateClass" />
+                <ScalarProperty Name="net" ColumnName="net" />
+                <ScalarProperty Name="hotelMandatory" ColumnName="hotelMandatory" />
+                <ScalarProperty Name="boardName" ColumnName="boardName" />
+                <ScalarProperty Name="adults" ColumnName="adults" />
+                <ScalarProperty Name="children" ColumnName="children" />
+                <ScalarProperty Name="Paxes" ColumnName="Paxes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CancelPolicies">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.CancelPolicy">
+              <MappingFragment StoreEntitySet="CancelPolicy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ProviderCurrency" ColumnName="ProviderCurrency" />
+                <ScalarProperty Name="MarkupId" ColumnName="MarkupId" />
+                <ScalarProperty Name="MarkupVal" ColumnName="MarkupVal" />
+                <ScalarProperty Name="DisCountID" ColumnName="DisCountID" />
+                <ScalarProperty Name="DisCountVal" ColumnName="DisCountVal" />
+<ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckAvailabiltyReqs">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.CheckAvailabiltyReq">
+              <MappingFragment StoreEntitySet="CheckAvailabiltyReq">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="BookinNum" ColumnName="BookinNum" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfirmationRequests">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.ConfirmationRequest">
+              <MappingFragment StoreEntitySet="ConfirmationRequest">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+                <ScalarProperty Name="Sessionid" ColumnName="Sessionid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Customer_User_ID" ColumnName="Customer User ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Phone_Code" ColumnName="Phone Code" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Date_Of_Birth" ColumnName="Date Of Birth" />
+                <ScalarProperty Name="Passport_No" ColumnName="Passport No" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Salutations" ColumnName="Salutations" />
+                <ScalarProperty Name="Passport_Expiration_Date" ColumnName="Passport Expiration Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingCustomerCancelations">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingCustomerCancelation">
+              <MappingFragment StoreEntitySet="HotelBookingCustomerCancelation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="Room_No" ColumnName="Room_No" />
+                <ScalarProperty Name="Date_From" ColumnName="Date_From" />
+                <ScalarProperty Name="Date_To" ColumnName="Date_To" />
+                <ScalarProperty Name="Amend_Restriction" ColumnName="Amend_Restriction" />
+                <ScalarProperty Name="Cancel_Restriction" ColumnName="Cancel_Restriction" />
+                <ScalarProperty Name="Cancel_Amount" ColumnName="Cancel_Amount" />
+                <ScalarProperty Name="Customer_Cancel_Amount" ColumnName="Customer_Cancel_Amount" />
+                <ScalarProperty Name="No_Show_Amount" ColumnName="No_Show_Amount" />
+                <ScalarProperty Name="Rule_Text" ColumnName="Rule_Text" />
+                <ScalarProperty Name="Markup_Id" ColumnName="Markup_Id" />
+                <ScalarProperty Name="Markup_Amount" ColumnName="Markup_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingDeliveries">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingDelivery">
+              <MappingFragment StoreEntitySet="HotelBookingDelivery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CustomerPhoneCode" ColumnName="CustomerPhoneCode" />
+                <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+                <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+                <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+                <ScalarProperty Name="DeliveryCost" ColumnName="DeliveryCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingNights">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingNight">
+              <MappingFragment StoreEntitySet="HotelBookingNights">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="NightDate" ColumnName="NightDate" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Room_No" ColumnName="Room_No" />
+                <ScalarProperty Name="Exchange_Rate" ColumnName="Exchange_Rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingNums">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingNum">
+              <MappingFragment StoreEntitySet="HotelBookingNums">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BookingNumber" ColumnName="BookingNumber" />
+                <ScalarProperty Name="SearchID" ColumnName="SearchID" />
+                <ScalarProperty Name="CaptureDateTime" ColumnName="CaptureDateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingPaxs">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingPax">
+              <MappingFragment StoreEntitySet="HotelBookingPaxs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="Room_No" ColumnName="Room_No" />
+                <ScalarProperty Name="Pax_Type" ColumnName="Pax_Type" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Salutations" ColumnName="Salutations" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Phone_Code" ColumnName="Phone_Code" />
+                <ScalarProperty Name="PaxNo" ColumnName="PaxNo" />
+                <ScalarProperty Name="RoomRef" ColumnName="RoomRef" />
+          <ScalarProperty Name="Lead" ColumnName="Lead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingRooms">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingRoom">
+              <MappingFragment StoreEntitySet="HotelBookingRooms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Room_No" ColumnName="Room_No" />
+                <ScalarProperty Name="Room_Category" ColumnName="Room_Category" />
+                <ScalarProperty Name="Room_Type" ColumnName="Room_Type" />
+                <ScalarProperty Name="Meal" ColumnName="Meal" />
+                <ScalarProperty Name="Special_Request" ColumnName="Special_Request" />
+                <ScalarProperty Name="Paxs_Qty" ColumnName="Paxs_Qty" />
+                <ScalarProperty Name="IsNonRefundable" ColumnName="IsNonRefundable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingRoomsStatus">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingRoomsStatu">
+              <MappingFragment StoreEntitySet="HotelBookingRoomsStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="Room_No" ColumnName="Room_No" />
+                <ScalarProperty Name="Room_Status" ColumnName="Room_Status" />
+                <ScalarProperty Name="Agent_Id" ColumnName="Agent_Id" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingRoomStatusValues">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingRoomStatusValue">
+              <MappingFragment StoreEntitySet="HotelBookingRoomStatusValues">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingStatus">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingStatu">
+              <MappingFragment StoreEntitySet="HotelBookingStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="Booking_Status" ColumnName="Booking_Status" />
+                <ScalarProperty Name="Status_Time" ColumnName="Status_Time" />
+                <ScalarProperty Name="Agent_Id" ColumnName="Agent_Id" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBookingStatusValues">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelBookingStatusValue">
+              <MappingFragment StoreEntitySet="HotelBookingStatusValues">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsBookings">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.HotelsBooking">
+              <MappingFragment StoreEntitySet="HotelsBooking">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="HotelProviderID" ColumnName="HotelProviderID" />
+                <ScalarProperty Name="Hotel_ID" ColumnName="Hotel_ID" />
+                <ScalarProperty Name="Rooms_Qty" ColumnName="Rooms_Qty" />
+                <ScalarProperty Name="Pax_Qty" ColumnName="Pax_Qty" />
+                <ScalarProperty Name="Booking_Time" ColumnName="Booking_Time" />
+                <ScalarProperty Name="Booking_Status" ColumnName="Booking_Status" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Provider_ID" ColumnName="Provider_ID" />
+                <ScalarProperty Name="Sell_Price" ColumnName="Sell_Price" />
+                <ScalarProperty Name="Sell_Currency" ColumnName="Sell_Currency" />
+                <ScalarProperty Name="Booking_Phone_Code" ColumnName="Booking_Phone_Code" />
+                <ScalarProperty Name="Booking_phone" ColumnName="Booking_phone" />
+                <ScalarProperty Name="Booking_Email" ColumnName="Booking_Email" />
+                <ScalarProperty Name="Booking_Conf" ColumnName="Booking_Conf" />
+                <ScalarProperty Name="HotelConfirmationNo" ColumnName="HotelConfirmationNo" />
+                <ScalarProperty Name="Pax_Name" ColumnName="Pax_Name" />
+                <ScalarProperty Name="Foreign_Amount" ColumnName="Foreign_Amount" />
+                <ScalarProperty Name="Total_Cost_Main_Currency" ColumnName="Total_Cost_Main_Currency" />
+                <ScalarProperty Name="PromoCode_ID" ColumnName="PromoCode_ID" />
+                <ScalarProperty Name="PromoCode_Amount" ColumnName="PromoCode_Amount" />
+                <ScalarProperty Name="Sales_Channel" ColumnName="Sales_Channel" />
+                <ScalarProperty Name="Form_Of_Payment" ColumnName="Form_Of_Payment" />
+                <ScalarProperty Name="NotificationKey" ColumnName="NotificationKey" />
+                <ScalarProperty Name="voucherPdf" ColumnName="voucherPdf" />
+                <ScalarProperty Name="InvoicePdf" ColumnName="InvoicePdf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PointsOfSales">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.PointsOfSale">
+              <MappingFragment StoreEntitySet="PointsOfSale">
+                <ScalarProperty Name="POSID" ColumnName="POSID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SourceTraffics">
+            <EntityTypeMapping TypeName="HotelBookingDBModel.SourceTraffic">
+              <MappingFragment StoreEntitySet="SourceTraffics">
+                <ScalarProperty Name="SourceID" ColumnName="SourceID" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

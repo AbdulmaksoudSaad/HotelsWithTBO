@@ -1,0 +1,2574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="hotelsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="apartmentClassifications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="apartmentClassificationCode" Type="varchar" MaxLength="50" />
+          <Property Name="apartmentClassification" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="BusinessIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessCode" Type="varchar" MaxLength="50" />
+          <Property Name="Business" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="countryCode" Type="varchar" MaxLength="50" />
+          <Property Name="countryName" Type="varchar" MaxLength="255" />
+          <Property Name="Downloaded" Type="varchar" MaxLength="50" />
+          <Property Name="City_Ar" Type="nvarchar" MaxLength="255" />
+          <Property Name="countryName_Ar" Type="nvarchar" MaxLength="255" />
+          <Property Name="CityCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CitiesIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="providerCity" Type="int" />
+          <Property Name="providerID" Type="int" />
+          <Property Name="cityID" Type="int" />
+        </EntityType>
+        <EntityType Name="CityTax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CityTourismTax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="StarRating" Type="int" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" />
+          <Property Name="code" Type="varchar" MaxLength="50" />
+          <Property Name="phoneCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="region" Type="varchar(max)" />
+          <Property Name="regionCode" Type="varchar" MaxLength="50" />
+          <Property Name="name_Ar" Type="nvarchar(max)" />
+          <Property Name="region_Ar" Type="nvarchar(max)" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="countriesIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="providerCountry" Type="varchar" MaxLength="50" />
+          <Property Name="providerID" Type="int" />
+          <Property Name="countryID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hotelAmenitiesIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="amenityCode" Type="varchar" MaxLength="50" />
+          <Property Name="amenityName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelChains">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelChainCode" Type="varchar" MaxLength="50" />
+          <Property Name="hotelChainName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="hotelClassifications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelClassificationCode" Type="varchar" MaxLength="50" />
+          <Property Name="hotelClassification" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelLocations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hoteID" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelRooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roomTypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Twin" Type="varchar" MaxLength="50" />
+          <Property Name="maxAdult" Type="int" />
+          <Property Name="maxExtraBed" Type="int" />
+          <Property Name="maxChildren" Type="int" />
+          <Property Name="roomPaxCapacity" Type="int" />
+          <Property Name="allowedAdultsWithoutChildren" Type="int" />
+          <Property Name="allowedAdultsWithChildren" Type="int" />
+        </EntityType>
+        <EntityType Name="hotels">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="builtYear" Type="varchar" MaxLength="50" />
+          <Property Name="renovationyear" Type="varchar" MaxLength="50" />
+          <Property Name="countryName" Type="varchar" MaxLength="255" />
+          <Property Name="countryCode" Type="varchar" MaxLength="50" />
+          <Property Name="runno" Type="int" />
+          <Property Name="floors" Type="int" />
+          <Property Name="noOfRooms" Type="int" />
+          <Property Name="Luxury" Type="varchar" MaxLength="50" />
+          <Property Name="hotelName" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="zipCode" Type="varchar" MaxLength="255" />
+          <Property Name="location" Type="varchar" MaxLength="255" />
+          <Property Name="locationID" Type="varchar" MaxLength="50" />
+          <Property Name="location1" Type="varchar" MaxLength="255" />
+          <Property Name="location2" Type="varchar" MaxLength="255" />
+          <Property Name="location3" Type="varchar" MaxLength="255" />
+          <Property Name="cityName" Type="varchar" MaxLength="255" />
+          <Property Name="cityCode" Type="varchar" MaxLength="50" />
+          <Property Name="stateName" Type="varchar" MaxLength="255" />
+          <Property Name="stateCode" Type="varchar" MaxLength="50" />
+          <Property Name="regionName" Type="varchar" MaxLength="255" />
+          <Property Name="regionCode" Type="varchar" MaxLength="50" />
+          <Property Name="hotelPhone" Type="varchar" MaxLength="50" />
+          <Property Name="hotelCheckIN" Type="varchar" MaxLength="50" />
+          <Property Name="hotelCheckOut" Type="varchar" MaxLength="50" />
+          <Property Name="minAge" Type="varchar" MaxLength="50" />
+          <Property Name="rating" Type="varchar" MaxLength="50" />
+          <Property Name="fireSafety" Type="varchar" MaxLength="50" />
+          <Property Name="direct" Type="varchar" MaxLength="50" />
+          <Property Name="chain" Type="varchar" MaxLength="50" />
+          <Property Name="lastUpdate" Type="varchar" MaxLength="50" />
+          <Property Name="Lat" Type="varchar" MaxLength="255" />
+          <Property Name="Lng" Type="varchar" MaxLength="255" />
+          <Property Name="city2" Type="varchar" MaxLength="255" />
+          <Property Name="preferred" Type="varchar" MaxLength="50" />
+          <Property Name="hotelID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Hotels_Ar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="nvarchar" MaxLength="50" />
+          <Property Name="countryName" Type="nvarchar" MaxLength="255" />
+          <Property Name="hotelName" Type="nvarchar" MaxLength="255" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+          <Property Name="location" Type="nvarchar" MaxLength="255" />
+          <Property Name="location1" Type="nvarchar" MaxLength="255" />
+          <Property Name="location2" Type="nvarchar" MaxLength="255" />
+          <Property Name="location3" Type="nvarchar" MaxLength="255" />
+          <Property Name="cityName" Type="nvarchar" MaxLength="255" />
+          <Property Name="city2" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelsAmenities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelID" Type="varchar" MaxLength="50" />
+          <Property Name="amenitieID" Type="varchar" MaxLength="50" />
+          <Property Name="amenitie" Type="nchar" MaxLength="255" />
+          <Property Name="amenitie_Ar" Type="nvarchar" MaxLength="255" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelsDescriptions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelID" Type="varchar" MaxLength="50" />
+          <Property Name="Description1" Type="varchar(max)" />
+          <Property Name="Description2" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="HotelsDescriptions_Ar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description2" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelsImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="varchar" MaxLength="255" />
+          <Property Name="Thum" Type="varchar(max)" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="URL" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelsLeisures">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="varchar" MaxLength="50" />
+          <Property Name="Leisure" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotelsPreferences">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Preference" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="hotelsProviders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hotelID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="providerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="providerHotelID" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelsTransportations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="varchar" MaxLength="50" />
+          <Property Name="TransportationType" Type="varchar" MaxLength="255" />
+          <Property Name="TransportationName" Type="varchar" MaxLength="255" />
+          <Property Name="Dist" Type="float" />
+          <Property Name="DistUnit" Type="varchar" MaxLength="50" />
+          <Property Name="DistTime" Type="float" />
+          <Property Name="DistTimeUnit" Type="varchar" MaxLength="50" />
+          <Property Name="Directions" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="InfoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InfoTypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="InfoType" Type="varbinary" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LeisureIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeisureCode" Type="varchar" MaxLength="50" />
+          <Property Name="Leisure" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MealsDescription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MealCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MealDescription" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="providerName" Type="varchar(max)" />
+          <Property Name="providerShortcut" Type="varchar" MaxLength="50" />
+          <Property Name="providerUserID" Type="varchar" MaxLength="255" />
+          <Property Name="providerPassword" Type="varchar" MaxLength="255" />
+          <Property Name="providerCompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="providerDbSource" Type="varchar" MaxLength="255" />
+          <Property Name="providerDbDataFile" Type="varchar" MaxLength="255" />
+          <Property Name="providerPhone" Type="varchar" MaxLength="50" />
+          <Property Name="providerEmail" Type="varchar" MaxLength="50" />
+          <Property Name="providerEndPoint" Type="varchar" MaxLength="50" />
+          <Property Name="providerDocumentationLink" Type="varchar" MaxLength="255" />
+          <Property Name="providerDocumentationType" Type="varchar" MaxLength="50" />
+          <Property Name="providerWebsite" Type="varchar" MaxLength="255" />
+          <Property Name="providerDescription" Type="varchar(max)" />
+          <Property Name="providerCurrencyCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProvidersNationalities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nationality" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="int" />
+          <Property Name="providerNationality" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProvidersResidences">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Residence" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="int" />
+          <Property Name="providerResidence" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProvidersSalutations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salutationCode" Type="varchar" MaxLength="50" />
+          <Property Name="salutation" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="varchar" MaxLength="50" />
+          <Property Name="providerSalutation" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="RateBasisIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rateBasisCode" Type="varchar" MaxLength="50" />
+          <Property Name="rateBasis" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="roomAmenities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roomAmenityCode" Type="varchar" MaxLength="50" />
+          <Property Name="roomAmenityName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SpecialRequestsIDs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="specialRequestCode" Type="varchar" MaxLength="50" />
+          <Property Name="specialRequest" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tmpDotwHotelsRates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rateTime" Type="datetime" />
+          <Property Name="rateFrom" Type="float" />
+          <Property Name="availability" Type="varchar" MaxLength="50" />
+          <Property Name="runno" Type="int" />
+          <Property Name="hotelID" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="varchar" MaxLength="50" />
+          <Property Name="sessionID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tmpDotwHotelsRatesTest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rateTime" Type="datetime" />
+          <Property Name="rateFrom" Type="float" />
+          <Property Name="availability" Type="varchar" MaxLength="50" />
+          <Property Name="runno" Type="int" />
+          <Property Name="hotelID" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="varchar" MaxLength="50" />
+          <Property Name="sessionID" Type="varchar(max)" />
+          <Property Name="RoomDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tmpDotwRoomsCancellation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="optionNo" Type="varchar" MaxLength="50" />
+          <Property Name="roomTypeNo" Type="varchar" MaxLength="50" />
+          <Property Name="ruleFromDate" Type="datetime" />
+          <Property Name="ruleToDate" Type="datetime" />
+          <Property Name="amendRestricted" Type="varchar" MaxLength="50" />
+          <Property Name="cancelRestricted" Type="varchar" MaxLength="50" />
+          <Property Name="noShowPolicy" Type="varchar(max)" />
+          <Property Name="amedCharge" Type="float" />
+          <Property Name="cancelCharge" Type="float" />
+          <Property Name="charge" Type="float" />
+          <Property Name="ruleText" Type="varchar(max)" />
+          <Property Name="sessionID" Type="varchar(max)" />
+          <Property Name="cancellationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="markupId" Type="nvarchar" MaxLength="50" />
+          <Property Name="markupAmount" Type="float" />
+        </EntityType>
+        <EntityType Name="tmpDotwRoomsRateDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="optionNo" Type="varchar" MaxLength="50" />
+          <Property Name="roomTypeNo" Type="varchar" MaxLength="50" />
+          <Property Name="rateDate" Type="datetime" />
+          <Property Name="rate" Type="float" />
+          <Property Name="sessionID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tmpDotwRoomsResults">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionNo" Type="varchar" MaxLength="50" />
+          <Property Name="RoomTypeNo" Type="varchar" MaxLength="50" />
+          <Property Name="propertyID" Type="varchar" MaxLength="50" />
+          <Property Name="seq" Type="varchar" MaxLength="50" />
+          <Property Name="roomTypeID" Type="varchar" MaxLength="50" />
+          <Property Name="mealBasisID" Type="varchar" MaxLength="50" />
+          <Property Name="roomType" Type="varchar" MaxLength="255" />
+          <Property Name="mealBasis" Type="varchar" MaxLength="255" />
+          <Property Name="subTotal" Type="float" />
+          <Property Name="discount" Type="float" />
+          <Property Name="total" Type="float" />
+          <Property Name="provider" Type="varchar" MaxLength="50" />
+          <Property Name="bookingToken" Type="varchar(max)" />
+          <Property Name="sessionID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tmpSearchCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cityID" Type="varchar" MaxLength="50" />
+          <Property Name="dateFrom" Type="datetime" />
+          <Property Name="dateTo" Type="datetime" />
+          <Property Name="duration" Type="int" />
+          <Property Name="roomNo" Type="int" />
+          <Property Name="adultsNo" Type="varchar" MaxLength="50" />
+          <Property Name="childrenNo" Type="varchar" MaxLength="50" />
+          <Property Name="infantsNo" Type="varchar" MaxLength="50" />
+          <Property Name="childrenAges" Type="varchar" MaxLength="50" />
+          <Property Name="rateBasis" Type="varchar" MaxLength="50" />
+          <Property Name="passengerNationality" Type="varchar" MaxLength="50" />
+          <Property Name="passengerCountryResidence" Type="varchar" MaxLength="50" />
+          <Property Name="pos" Type="nvarchar" MaxLength="50" />
+          <Property Name="sessionID" Type="varchar" MaxLength="255" />
+          <Property Name="sessionCreatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tmpTSHotelsRates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rateTime" Type="datetime" />
+          <Property Name="rateFrom" Type="float" />
+          <Property Name="availability" Type="varchar" MaxLength="50" />
+          <Property Name="runno" Type="int" />
+          <Property Name="refHotelID" Type="varchar" MaxLength="255" />
+          <Property Name="hotelID" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="varchar" MaxLength="50" />
+          <Property Name="sessionID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tmpTSRoomsCancelation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="optionNo" Type="varchar" MaxLength="50" />
+          <Property Name="roomTypeNo" Type="varchar" MaxLength="50" />
+          <Property Name="ruleFromDate" Type="datetime" />
+          <Property Name="ruleToDate" Type="datetime" />
+          <Property Name="amendRestricted" Type="varchar" MaxLength="50" />
+          <Property Name="cancelRestricted" Type="varchar" MaxLength="50" />
+          <Property Name="noShowPolicy" Type="varchar(max)" />
+          <Property Name="amedCharge" Type="float" />
+          <Property Name="cancelCharge" Type="float" />
+          <Property Name="charge" Type="float" />
+          <Property Name="ruleText" Type="varchar(max)" />
+          <Property Name="sessionID" Type="varchar(max)" />
+          <Property Name="cancellationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="markupId" Type="nvarchar" MaxLength="50" />
+          <Property Name="markupAmount" Type="float" />
+        </EntityType>
+        <EntityType Name="tmpTSRoomsRateDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="optionNo" Type="varchar" MaxLength="50" />
+          <Property Name="roomTypeNo" Type="varchar" MaxLength="50" />
+          <Property Name="rateDate" Type="datetime" />
+          <Property Name="rate" Type="float" />
+          <Property Name="sessionID" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tmpTSRoomsResults">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionNo" Type="varchar" MaxLength="50" />
+          <Property Name="RoomTypeNo" Type="varchar" MaxLength="50" />
+          <Property Name="propertyID" Type="varchar" MaxLength="50" />
+          <Property Name="seq" Type="varchar" MaxLength="50" />
+          <Property Name="roomTypeID" Type="varchar" MaxLength="50" />
+          <Property Name="mealBasisID" Type="varchar" MaxLength="50" />
+          <Property Name="roomType" Type="varchar" MaxLength="255" />
+          <Property Name="mealBasis" Type="varchar" MaxLength="255" />
+          <Property Name="subTotal" Type="float" />
+          <Property Name="discount" Type="float" />
+          <Property Name="total" Type="float" />
+          <Property Name="RSP" Type="float" />
+          <Property Name="ErrataData" Type="text" />
+          <Property Name="provider" Type="varchar" MaxLength="50" />
+          <Property Name="bookingToken" Type="varchar(max)" />
+          <Property Name="sessionID" Type="varchar(max)" />
+        </EntityType>
+        <Function Name="allCountries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="DeleteFromTMPDOTWHotelRates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Dotw_Hotels_Rates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Dotw_Hotels_Rates_Async" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Dotw_Hotels_Rates_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Dotw_Hotels_Rooms_Cancellation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Dotw_Hotels_Rooms_Rate_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Dotw_Hotels_Rooms_Results" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetAllCities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllCountries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllMealCodes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetBookItineraryWithBookingNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BookingNo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCitiesForHotels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCityById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCityByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCityTaxById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCityToursimTaxBycityId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cityid" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCityToursimTaxBycityIdandRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cityid" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rating" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCounrtyByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCountriesForHotels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCountryByCountryCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetCountryById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetHotelData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetHotelDataByHotelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="providerHotelID" Type="varchar" Mode="In" />
+          <Parameter Name="ProviderID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetHotelNameAndHotelId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hotelID" Type="nvarchar" Mode="In" />
+          <Parameter Name="providerId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetHotelsIDAndProvidersByCityName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="City" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetHotelsIdsByCityId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityId" Type="int" Mode="In" />
+          <Parameter Name="ProviderID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetHotelsIdsByCityName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="City" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetImagesByHotelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="providerHotelID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetProviderCityandIdBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProviderCityAndIdByCityID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProviderCurrency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetProviderData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProviderName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetProviderSalutation_Nationality_Residence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nationality" Type="varchar" Mode="In" />
+          <Parameter Name="residence" Type="varchar" Mode="In" />
+          <Parameter Name="provider" Type="int" Mode="In" />
+          <Parameter Name="salutation" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetRoomImageByHotelId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HotelId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetSearchCriteriaBySID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetSearchHotelList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetSearchHotelListTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SaveSearchCriteria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="df" Type="datetime" Mode="In" />
+          <Parameter Name="dt" Type="datetime" Mode="In" />
+          <Parameter Name="duration" Type="int" Mode="In" />
+          <Parameter Name="roomNo" Type="int" Mode="In" />
+          <Parameter Name="adults" Type="varchar" Mode="In" />
+          <Parameter Name="children" Type="varchar" Mode="In" />
+          <Parameter Name="infants" Type="varchar" Mode="In" />
+          <Parameter Name="childrenAges" Type="varchar" Mode="In" />
+          <Parameter Name="rateBasis" Type="varchar" Mode="In" />
+          <Parameter Name="residence" Type="varchar" Mode="In" />
+          <Parameter Name="nationality" Type="varchar" Mode="In" />
+          <Parameter Name="sessionID" Type="varchar" Mode="In" />
+          <Parameter Name="POS" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="TS_Hotels_Rates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="TS_Hotels_Rooms_Cancellation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="TS_Hotels_Rooms_Rate_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="TS_Hotels_Rooms_Results" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sessionID" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="hotelsDBModelStoreContainer">
+          <EntitySet Name="apartmentClassifications" EntityType="Self.apartmentClassifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessIDs" EntityType="Self.BusinessIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CitiesIDs" EntityType="Self.CitiesIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityTax" EntityType="Self.CityTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityTourismTax" EntityType="Self.CityTourismTax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="countriesIDs" EntityType="Self.countriesIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hotelAmenitiesIDs" EntityType="Self.hotelAmenitiesIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelChains" EntityType="Self.HotelChains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hotelClassifications" EntityType="Self.hotelClassifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelLocations" EntityType="Self.HotelLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelRooms" EntityType="Self.HotelRooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hotels" EntityType="Self.hotels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotels_Ar" EntityType="Self.Hotels_Ar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsAmenities" EntityType="Self.HotelsAmenities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsDescriptions" EntityType="Self.HotelsDescriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsDescriptions_Ar" EntityType="Self.HotelsDescriptions_Ar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsImages" EntityType="Self.HotelsImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsLeisures" EntityType="Self.HotelsLeisures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsPreferences" EntityType="Self.HotelsPreferences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hotelsProviders" EntityType="Self.hotelsProviders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelsTransportations" EntityType="Self.HotelsTransportations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfoType" EntityType="Self.InfoType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LeisureIDs" EntityType="Self.LeisureIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MealsDescription" EntityType="Self.MealsDescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvidersNationalities" EntityType="Self.ProvidersNationalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvidersResidences" EntityType="Self.ProvidersResidences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvidersSalutations" EntityType="Self.ProvidersSalutations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RateBasisIDs" EntityType="Self.RateBasisIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roomAmenities" EntityType="Self.roomAmenities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialRequestsIDs" EntityType="Self.SpecialRequestsIDs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpDotwHotelsRates" EntityType="Self.tmpDotwHotelsRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpDotwHotelsRatesTest" EntityType="Self.tmpDotwHotelsRatesTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpDotwRoomsCancellation" EntityType="Self.tmpDotwRoomsCancellation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpDotwRoomsRateDate" EntityType="Self.tmpDotwRoomsRateDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpDotwRoomsResults" EntityType="Self.tmpDotwRoomsResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpSearchCriteria" EntityType="Self.tmpSearchCriteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpTSHotelsRates" EntityType="Self.tmpTSHotelsRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpTSRoomsCancelation" EntityType="Self.tmpTSRoomsCancelation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpTSRoomsRateDate" EntityType="Self.tmpTSRoomsRateDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tmpTSRoomsResults" EntityType="Self.tmpTSRoomsResults" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hotelsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="apartmentClassification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apartmentClassificationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apartmentClassification1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BusinessID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Business" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="countryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="countryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Downloaded" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City_Ar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="countryName_Ar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CitiesID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="providerCity" Type="Int32" />
+          <Property Name="providerID" Type="Int32" />
+          <Property Name="cityID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CityTax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CityTourismTax">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StarRating" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="regionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="region_Ar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="countriesID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="providerCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerID" Type="Int32" />
+          <Property Name="countryID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hotelAmenitiesID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amenityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amenityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelChain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelChainCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelChainName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hotelClassification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelClassificationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelClassification1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelLocation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hoteID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roomTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Twin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="maxAdult" Type="Int32" />
+          <Property Name="maxExtraBed" Type="Int32" />
+          <Property Name="maxChildren" Type="Int32" />
+          <Property Name="roomPaxCapacity" Type="Int32" />
+          <Property Name="allowedAdultsWithoutChildren" Type="Int32" />
+          <Property Name="allowedAdultsWithChildren" Type="Int32" />
+        </EntityType>
+        <EntityType Name="hotel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="builtYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="renovationyear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="countryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="countryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="runno" Type="Int32" />
+          <Property Name="floors" Type="Int32" />
+          <Property Name="noOfRooms" Type="Int32" />
+          <Property Name="Luxury" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="zipCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="locationID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="location1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="location2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="location3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stateName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="stateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="regionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="regionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelCheckIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelCheckOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="minAge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fireSafety" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="chain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastUpdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Lng" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="preferred" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Hotels_Ar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="countryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hotelName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="location1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="location2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="location3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="cityName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="city2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelsAmenity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amenitieID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amenitie" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="amenitie_Ar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelsDescription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelsDescriptions_Ar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelsImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Thum" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelsLeisure">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Leisure" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotelsPreference">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Preference" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hotelsProvider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="providerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="providerHotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HotelsTransportation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransportationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TransportationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Dist" Type="Double" />
+          <Property Name="DistUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DistTime" Type="Double" />
+          <Property Name="DistTimeUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Directions" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InfoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InfoTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InfoType1" Type="Binary" MaxLength="255" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="LeisureID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeisureCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Leisure" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MealsDescription">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MealCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MealDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="providerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="providerShortcut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerUserID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerCompanyCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerDbSource" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerDbDataFile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerEndPoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerDocumentationLink" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerDocumentationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="providerDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="providerCurrencyCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProvidersNationality">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="Int32" />
+          <Property Name="providerNationality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProvidersResidence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Residence" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="Int32" />
+          <Property Name="providerResidence" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProvidersSalutation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salutationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="salutation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="providerSalutation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RateBasisID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rateBasisCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rateBasis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="roomAmenity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roomAmenityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomAmenityName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SpecialRequestsID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="specialRequestCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="specialRequest" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tmpDotwHotelsRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rateTime" Type="DateTime" Precision="3" />
+          <Property Name="rateFrom" Type="Double" />
+          <Property Name="availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="runno" Type="Int32" />
+          <Property Name="hotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tmpDotwHotelsRatesTest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rateTime" Type="DateTime" Precision="3" />
+          <Property Name="rateFrom" Type="Double" />
+          <Property Name="availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="runno" Type="Int32" />
+          <Property Name="hotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RoomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tmpDotwRoomsCancellation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="optionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomTypeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruleFromDate" Type="DateTime" Precision="3" />
+          <Property Name="ruleToDate" Type="DateTime" Precision="3" />
+          <Property Name="amendRestricted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cancelRestricted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noShowPolicy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amedCharge" Type="Double" />
+          <Property Name="cancelCharge" Type="Double" />
+          <Property Name="charge" Type="Double" />
+          <Property Name="ruleText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cancellationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markupId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markupAmount" Type="Double" />
+        </EntityType>
+        <EntityType Name="tmpDotwRoomsRateDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="optionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomTypeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rateDate" Type="DateTime" Precision="3" />
+          <Property Name="rate" Type="Double" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tmpDotwRoomsResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomTypeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="propertyID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="seq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomTypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mealBasisID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mealBasis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="subTotal" Type="Double" />
+          <Property Name="discount" Type="Double" />
+          <Property Name="total" Type="Double" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookingToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tmpSearchCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateFrom" Type="DateTime" Precision="3" />
+          <Property Name="dateTo" Type="DateTime" Precision="3" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="roomNo" Type="Int32" />
+          <Property Name="adultsNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="childrenNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="infantsNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="childrenAges" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rateBasis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="passengerNationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="passengerCountryResidence" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sessionID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sessionCreatedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tmpTSHotelsRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rateTime" Type="DateTime" Precision="3" />
+          <Property Name="rateFrom" Type="Double" />
+          <Property Name="availability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="runno" Type="Int32" />
+          <Property Name="refHotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="hotelID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tmpTSRoomsCancelation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="optionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomTypeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruleFromDate" Type="DateTime" Precision="3" />
+          <Property Name="ruleToDate" Type="DateTime" Precision="3" />
+          <Property Name="amendRestricted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cancelRestricted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="noShowPolicy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amedCharge" Type="Double" />
+          <Property Name="cancelCharge" Type="Double" />
+          <Property Name="charge" Type="Double" />
+          <Property Name="ruleText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cancellationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markupId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markupAmount" Type="Double" />
+        </EntityType>
+        <EntityType Name="tmpTSRoomsRateDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="optionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomTypeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rateDate" Type="DateTime" Precision="3" />
+          <Property Name="rate" Type="Double" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tmpTSRoomsResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomTypeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="propertyID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="seq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomTypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mealBasisID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="roomType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mealBasis" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="subTotal" Type="Double" />
+          <Property Name="discount" Type="Double" />
+          <Property Name="total" Type="Double" />
+          <Property Name="RSP" Type="Double" />
+          <Property Name="ErrataData" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bookingToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="hotelsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="apartmentClassifications" EntityType="Self.apartmentClassification" />
+          <EntitySet Name="BusinessIDs" EntityType="Self.BusinessID" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="CitiesIDs" EntityType="Self.CitiesID" />
+          <EntitySet Name="CityTaxes" EntityType="Self.CityTax" />
+          <EntitySet Name="CityTourismTaxes" EntityType="Self.CityTourismTax" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="countriesIDs" EntityType="Self.countriesID" />
+          <EntitySet Name="hotelAmenitiesIDs" EntityType="Self.hotelAmenitiesID" />
+          <EntitySet Name="HotelChains" EntityType="Self.HotelChain" />
+          <EntitySet Name="hotelClassifications" EntityType="Self.hotelClassification" />
+          <EntitySet Name="HotelLocations" EntityType="Self.HotelLocation" />
+          <EntitySet Name="HotelRooms" EntityType="Self.HotelRoom" />
+          <EntitySet Name="hotels" EntityType="Self.hotel" />
+          <EntitySet Name="Hotels_Ar" EntityType="Self.Hotels_Ar" />
+          <EntitySet Name="HotelsAmenities" EntityType="Self.HotelsAmenity" />
+          <EntitySet Name="HotelsDescriptions" EntityType="Self.HotelsDescription" />
+          <EntitySet Name="HotelsDescriptions_Ar" EntityType="Self.HotelsDescriptions_Ar" />
+          <EntitySet Name="HotelsImages" EntityType="Self.HotelsImage" />
+          <EntitySet Name="HotelsLeisures" EntityType="Self.HotelsLeisure" />
+          <EntitySet Name="HotelsPreferences" EntityType="Self.HotelsPreference" />
+          <EntitySet Name="hotelsProviders" EntityType="Self.hotelsProvider" />
+          <EntitySet Name="HotelsTransportations" EntityType="Self.HotelsTransportation" />
+          <EntitySet Name="InfoTypes" EntityType="Self.InfoType" />
+          <EntitySet Name="LeisureIDs" EntityType="Self.LeisureID" />
+          <EntitySet Name="MealsDescriptions" EntityType="Self.MealsDescription" />
+          <EntitySet Name="Providers" EntityType="Self.Provider" />
+          <EntitySet Name="ProvidersNationalities" EntityType="Self.ProvidersNationality" />
+          <EntitySet Name="ProvidersResidences" EntityType="Self.ProvidersResidence" />
+          <EntitySet Name="ProvidersSalutations" EntityType="Self.ProvidersSalutation" />
+          <EntitySet Name="RateBasisIDs" EntityType="Self.RateBasisID" />
+          <EntitySet Name="roomAmenities" EntityType="Self.roomAmenity" />
+          <EntitySet Name="SpecialRequestsIDs" EntityType="Self.SpecialRequestsID" />
+          <EntitySet Name="tmpDotwHotelsRates" EntityType="Self.tmpDotwHotelsRate" />
+          <EntitySet Name="tmpDotwHotelsRatesTests" EntityType="Self.tmpDotwHotelsRatesTest" />
+          <EntitySet Name="tmpDotwRoomsCancellations" EntityType="Self.tmpDotwRoomsCancellation" />
+          <EntitySet Name="tmpDotwRoomsRateDates" EntityType="Self.tmpDotwRoomsRateDate" />
+          <EntitySet Name="tmpDotwRoomsResults" EntityType="Self.tmpDotwRoomsResult" />
+          <EntitySet Name="tmpSearchCriterias" EntityType="Self.tmpSearchCriteria" />
+          <EntitySet Name="tmpTSHotelsRates" EntityType="Self.tmpTSHotelsRate" />
+          <EntitySet Name="tmpTSRoomsCancelations" EntityType="Self.tmpTSRoomsCancelation" />
+          <EntitySet Name="tmpTSRoomsRateDates" EntityType="Self.tmpTSRoomsRateDate" />
+          <EntitySet Name="tmpTSRoomsResults" EntityType="Self.tmpTSRoomsResult" />
+          <FunctionImport Name="allCountries" />
+          <FunctionImport Name="DeleteFromTMPDOTWHotelRates">
+          <Parameter Name="sID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Dotw_Hotels_Rates">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Dotw_Hotels_Rates_Async">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Dotw_Hotels_Rates_Test">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Dotw_Hotels_Rooms_Cancellation">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Dotw_Hotels_Rooms_Rate_Date">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Dotw_Hotels_Rooms_Results">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllCities" ReturnType="Collection(hotelsDBModel.GetAllCities_Result)" />
+          <FunctionImport Name="GetAllCountries" ReturnType="Collection(hotelsDBModel.GetAllCountries_Result)" />
+          <FunctionImport Name="GetAllMealCodes" ReturnType="Collection(hotelsDBModel.GetAllMealCodes_Result)" />
+          <FunctionImport Name="GetBookItineraryWithBookingNo" ReturnType="Collection(hotelsDBModel.GetBookItineraryWithBookingNo_Result)">
+          <Parameter Name="BookingNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCitiesForHotels" ReturnType="Collection(hotelsDBModel.GetCitiesForHotels_Result)" />
+          <FunctionImport Name="GetCityById" ReturnType="Collection(hotelsDBModel.GetCityById_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCityByName" ReturnType="Collection(hotelsDBModel.GetCityByName_Result)">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCityTaxById" ReturnType="Collection(hotelsDBModel.GetCityTaxById_Result)">
+          <Parameter Name="CityID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCityToursimTaxBycityId" ReturnType="Collection(hotelsDBModel.GetCityToursimTaxBycityId_Result)">
+          <Parameter Name="Cityid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCityToursimTaxBycityIdandRate" ReturnType="Collection(hotelsDBModel.GetCityToursimTaxBycityIdandRate_Result)">
+            <Parameter Name="Cityid" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCounrtyByName" ReturnType="Collection(hotelsDBModel.GetCounrtyByName_Result)">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCountriesForHotels" ReturnType="Collection(hotelsDBModel.GetCountriesForHotels_Result)" />
+          <FunctionImport Name="GetCountryByCountryCode" ReturnType="Collection(hotelsDBModel.GetCountryByCountryCode_Result)">
+          <Parameter Name="CountryCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetCountryById" ReturnType="Collection(hotelsDBModel.GetCountryById_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetHotelData" />
+          <FunctionImport Name="GetHotelDataByHotelID" ReturnType="Collection(hotelsDBModel.GetHotelDataByHotelID_Result)">
+            <Parameter Name="providerHotelID" Mode="In" Type="String" />
+            <Parameter Name="ProviderID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetHotelNameAndHotelId" ReturnType="Collection(hotelsDBModel.GetHotelNameAndHotelId_Result)">
+            <Parameter Name="hotelID" Mode="In" Type="String" />
+            <Parameter Name="providerId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetHotelsIdsByCityId" ReturnType="Collection(String)">
+            <Parameter Name="CityId" Mode="In" Type="Int32" />
+            <Parameter Name="ProviderID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetImagesByHotelID" ReturnType="Collection(hotelsDBModel.GetImagesByHotelID_Result)">
+          <Parameter Name="providerHotelID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProviderCityandIdBy" ReturnType="Collection(hotelsDBModel.GetProviderCityandIdBy_Result)">
+          <Parameter Name="cityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProviderCityAndIdByCityID" ReturnType="Collection(hotelsDBModel.GetProviderCityAndIdByCityID_Result)">
+          <Parameter Name="CityId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProviderCurrency" ReturnType="Collection(hotelsDBModel.GetProviderCurrency_Result)" />
+          <FunctionImport Name="GetProviderData" ReturnType="Collection(hotelsDBModel.GetProviderData_Result)">
+          <Parameter Name="ProviderName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetProviderSalutation_Nationality_Residence" ReturnType="Collection(hotelsDBModel.GetProviderSalutation_Nationality_Residence_Result)">
+            <Parameter Name="nationality" Mode="In" Type="String" />
+            <Parameter Name="residence" Mode="In" Type="String" />
+            <Parameter Name="provider" Mode="In" Type="Int32" />
+            <Parameter Name="salutation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRoomImageByHotelId" ReturnType="Collection(String)">
+          <Parameter Name="HotelId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetSearchCriteriaBySID" ReturnType="Collection(hotelsDBModel.GetSearchCriteriaBySID_Result)">
+          <Parameter Name="sID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetSearchHotelList" ReturnType="Collection(hotelsDBModel.GetSearchHotelList_Result)">
+          <Parameter Name="sID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetSearchHotelListTest" ReturnType="Collection(hotelsDBModel.GetSearchHotelListTest_Result)">
+          <Parameter Name="sID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SaveSearchCriteria">
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="df" Mode="In" Type="DateTime" />
+            <Parameter Name="dt" Mode="In" Type="DateTime" />
+            <Parameter Name="duration" Mode="In" Type="Int32" />
+            <Parameter Name="roomNo" Mode="In" Type="Int32" />
+            <Parameter Name="adults" Mode="In" Type="String" />
+            <Parameter Name="children" Mode="In" Type="String" />
+            <Parameter Name="infants" Mode="In" Type="String" />
+            <Parameter Name="childrenAges" Mode="In" Type="String" />
+            <Parameter Name="rateBasis" Mode="In" Type="String" />
+            <Parameter Name="residence" Mode="In" Type="String" />
+            <Parameter Name="nationality" Mode="In" Type="String" />
+            <Parameter Name="sessionID" Mode="In" Type="String" />
+            <Parameter Name="POS" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TS_Hotels_Rates">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TS_Hotels_Rooms_Cancellation">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TS_Hotels_Rooms_Rate_Date">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TS_Hotels_Rooms_Results">
+          <Parameter Name="sessionID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetHotelsIDAndProvidersByCityName" ReturnType="Collection(hotelsDBModel.GetHotelsIDAndProvidersByCityName_Result)">
+            <Parameter Name="City" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetHotelsIdsByCityName" ReturnType="Collection(hotelsDBModel.GetHotelsIdsByCityName_Result)">
+            <Parameter Name="City" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllCities_Result">
+          <Property Type="String" Name="city" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="countrycode" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="cityid" Nullable="true" />
+          <Property Type="Int32" Name="providercity" Nullable="true" />
+          <Property Type="Int32" Name="providerID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllCountries_Result">
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="phoneCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="countryid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="providercountry" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="region" Nullable="true" />
+          <Property Type="String" Name="regionCode" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetAllMealCodes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MealCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MealDescription" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetBookItineraryWithBookingNo_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Booking_No" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BookItinerary_No" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Room_No" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ServiceReference" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="ProviderPrice" Nullable="true" />
+          <Property Type="String" Name="AllocationDetails" Nullable="true" />
+          <Property Type="DateTime" Name="DateTime" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCitiesForHotels_Result">
+          <Property Type="String" Name="city" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countrycode" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetCityById_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="countryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Downloaded" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City_Ar" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryName_Ar" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetCityByName_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="countryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Downloaded" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City_Ar" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryName_Ar" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetCityTaxById_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CityID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="String" Name="Currency" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetCityToursimTaxBycityId_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="String" Name="Currency" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="StarRating" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetCityToursimTaxBycityIdandRate_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Value" Nullable="true" />
+          <Property Type="String" Name="Currency" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="StarRating" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetCounrtyByName_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCountriesForHotels_Result">
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="phoneCode" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="region" Nullable="true" />
+          <Property Type="String" Name="regionCode" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCountryByCountryCode_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" />
+          <Property Type="String" Name="providerCountry" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCountryById_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetHotelDataByHotelID_Result">
+          <Property Type="String" Name="hotelID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="hotelName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="cityName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="rating" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="hotelCheckIN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="hotelCheckOut" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description1" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetHotelNameAndHotelId_Result">
+          <Property Type="String" Name="hotelname" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="hotelID" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetImagesByHotelID_Result">
+          <Property Type="String" Name="url" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetProviderCityandIdBy_Result">
+          <Property Type="Int32" Name="providerCity" Nullable="true" />
+          <Property Type="Int32" Name="providerID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProviderCityAndIdByCityID_Result">
+          <Property Type="Int32" Name="providerCity" Nullable="true" />
+          <Property Type="Int32" Name="providerID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProviderCurrency_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="providerCurrencyCode" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetProviderData_Result">
+          <Property Type="String" Name="provideruserid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="providerpassword" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="providercompanycode" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetProviderSalutation_Nationality_Residence_Result">
+          <Property Type="String" Name="providersalutation" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="providerNationality" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="providerresidence" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetSearchCriteriaBySID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="cityID" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dateFrom" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="dateTo" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="duration" Nullable="true" />
+          <Property Type="Int32" Name="roomNo" Nullable="true" />
+          <Property Type="String" Name="adultsNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="childrenNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="infantsNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="childrenAges" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="rateBasis" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="passengerNationality" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="passengerCountryResidence" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sessionID" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="sessionCreatedAt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="pos" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetSearchHotelList_Result">
+          <Property Type="String" Name="hotelname" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Description1" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" />
+          <Property Type="Double" Name="ratefrom" Nullable="true" />
+          <Property Type="Int32" Name="providerid" Nullable="false" />
+          <Property Type="String" Name="providerhotelid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="providerhotelcode" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="hotelid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="thum" Nullable="true" />
+          <Property Type="String" Name="rating" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lat" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Lng" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="cityName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="zipCode" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="address" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSearchHotelListTest_Result">
+          <Property Type="String" Name="hotelname" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Description1" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" />
+          <Property Type="Double" Name="ratefrom" Nullable="true" />
+          <Property Type="Int32" Name="providerid" Nullable="false" />
+          <Property Type="String" Name="RoomDescription" Nullable="true" />
+          <Property Type="String" Name="providerhotelid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="providerhotelcode" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="hotelid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="thum" Nullable="true" />
+          <Property Type="String" Name="rating" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Lat" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Lng" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="countryName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="cityName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="zipCode" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="address" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetHotelsIDAndProvidersByCityName_Result">
+          <Property Type="String" Name="providerHotelID" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="providerID" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetHotelsIdsByCityName_Result">
+          <Property Type="String" Name="providerHotelID" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="providerID" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hotelsDBModelStoreContainer" CdmEntityContainer="hotelsDBEntities">
+          <EntitySetMapping Name="apartmentClassifications">
+            <EntityTypeMapping TypeName="hotelsDBModel.apartmentClassification">
+              <MappingFragment StoreEntitySet="apartmentClassifications">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="apartmentClassificationCode" ColumnName="apartmentClassificationCode" />
+                <ScalarProperty Name="apartmentClassification1" ColumnName="apartmentClassification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.BusinessID">
+              <MappingFragment StoreEntitySet="BusinessIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BusinessCode" ColumnName="BusinessCode" />
+                <ScalarProperty Name="Business" ColumnName="Business" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="hotelsDBModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="City1" ColumnName="City" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="Downloaded" ColumnName="Downloaded" />
+                <ScalarProperty Name="City_Ar" ColumnName="City_Ar" />
+                <ScalarProperty Name="countryName_Ar" ColumnName="countryName_Ar" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitiesIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.CitiesID">
+              <MappingFragment StoreEntitySet="CitiesIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="providerCity" ColumnName="providerCity" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityTaxes">
+            <EntityTypeMapping TypeName="hotelsDBModel.CityTax">
+              <MappingFragment StoreEntitySet="CityTax">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityTourismTaxes">
+            <EntityTypeMapping TypeName="hotelsDBModel.CityTourismTax">
+              <MappingFragment StoreEntitySet="CityTourismTax">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="StarRating" ColumnName="StarRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="hotelsDBModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="phoneCode" ColumnName="phoneCode" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="regionCode" ColumnName="regionCode" />
+                <ScalarProperty Name="name_Ar" ColumnName="name_Ar" />
+                <ScalarProperty Name="region_Ar" ColumnName="region_Ar" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="countriesIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.countriesID">
+              <MappingFragment StoreEntitySet="countriesIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="providerCountry" ColumnName="providerCountry" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hotelAmenitiesIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.hotelAmenitiesID">
+              <MappingFragment StoreEntitySet="hotelAmenitiesIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="amenityCode" ColumnName="amenityCode" />
+                <ScalarProperty Name="amenityName" ColumnName="amenityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelChains">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelChain">
+              <MappingFragment StoreEntitySet="HotelChains">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hotelChainCode" ColumnName="hotelChainCode" />
+                <ScalarProperty Name="hotelChainName" ColumnName="hotelChainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hotelClassifications">
+            <EntityTypeMapping TypeName="hotelsDBModel.hotelClassification">
+              <MappingFragment StoreEntitySet="hotelClassifications">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hotelClassificationCode" ColumnName="hotelClassificationCode" />
+                <ScalarProperty Name="hotelClassification1" ColumnName="hotelClassification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelLocations">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelLocation">
+              <MappingFragment StoreEntitySet="HotelLocations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hoteID" ColumnName="hoteID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelRooms">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelRoom">
+              <MappingFragment StoreEntitySet="HotelRooms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="roomTypeCode" ColumnName="roomTypeCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Twin" ColumnName="Twin" />
+                <ScalarProperty Name="maxAdult" ColumnName="maxAdult" />
+                <ScalarProperty Name="maxExtraBed" ColumnName="maxExtraBed" />
+                <ScalarProperty Name="maxChildren" ColumnName="maxChildren" />
+                <ScalarProperty Name="roomPaxCapacity" ColumnName="roomPaxCapacity" />
+                <ScalarProperty Name="allowedAdultsWithoutChildren" ColumnName="allowedAdultsWithoutChildren" />
+                <ScalarProperty Name="allowedAdultsWithChildren" ColumnName="allowedAdultsWithChildren" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hotels">
+            <EntityTypeMapping TypeName="hotelsDBModel.hotel">
+              <MappingFragment StoreEntitySet="hotels">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="builtYear" ColumnName="builtYear" />
+                <ScalarProperty Name="renovationyear" ColumnName="renovationyear" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="runno" ColumnName="runno" />
+                <ScalarProperty Name="floors" ColumnName="floors" />
+                <ScalarProperty Name="noOfRooms" ColumnName="noOfRooms" />
+                <ScalarProperty Name="Luxury" ColumnName="Luxury" />
+                <ScalarProperty Name="hotelName" ColumnName="hotelName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="locationID" ColumnName="locationID" />
+                <ScalarProperty Name="location1" ColumnName="location1" />
+                <ScalarProperty Name="location2" ColumnName="location2" />
+                <ScalarProperty Name="location3" ColumnName="location3" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="cityCode" ColumnName="cityCode" />
+                <ScalarProperty Name="stateName" ColumnName="stateName" />
+                <ScalarProperty Name="stateCode" ColumnName="stateCode" />
+                <ScalarProperty Name="regionName" ColumnName="regionName" />
+                <ScalarProperty Name="regionCode" ColumnName="regionCode" />
+                <ScalarProperty Name="hotelPhone" ColumnName="hotelPhone" />
+                <ScalarProperty Name="hotelCheckIN" ColumnName="hotelCheckIN" />
+                <ScalarProperty Name="hotelCheckOut" ColumnName="hotelCheckOut" />
+                <ScalarProperty Name="minAge" ColumnName="minAge" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="fireSafety" ColumnName="fireSafety" />
+                <ScalarProperty Name="direct" ColumnName="direct" />
+                <ScalarProperty Name="chain" ColumnName="chain" />
+                <ScalarProperty Name="lastUpdate" ColumnName="lastUpdate" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="city2" ColumnName="city2" />
+                <ScalarProperty Name="preferred" ColumnName="preferred" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels_Ar">
+            <EntityTypeMapping TypeName="hotelsDBModel.Hotels_Ar">
+              <MappingFragment StoreEntitySet="Hotels_Ar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="hotelName" ColumnName="hotelName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="location1" ColumnName="location1" />
+                <ScalarProperty Name="location2" ColumnName="location2" />
+                <ScalarProperty Name="location3" ColumnName="location3" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="city2" ColumnName="city2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsAmenities">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsAmenity">
+              <MappingFragment StoreEntitySet="HotelsAmenities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="amenitieID" ColumnName="amenitieID" />
+                <ScalarProperty Name="amenitie" ColumnName="amenitie" />
+                <ScalarProperty Name="amenitie_Ar" ColumnName="amenitie_Ar" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsDescriptions">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsDescription">
+              <MappingFragment StoreEntitySet="HotelsDescriptions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsDescriptions_Ar">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsDescriptions_Ar">
+              <MappingFragment StoreEntitySet="HotelsDescriptions_Ar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsImages">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsImage">
+              <MappingFragment StoreEntitySet="HotelsImages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="Thum" ColumnName="Thum" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsLeisures">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsLeisure">
+              <MappingFragment StoreEntitySet="HotelsLeisures">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="Leisure" ColumnName="Leisure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsPreferences">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsPreference">
+              <MappingFragment StoreEntitySet="HotelsPreferences">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Preference" ColumnName="Preference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hotelsProviders">
+            <EntityTypeMapping TypeName="hotelsDBModel.hotelsProvider">
+              <MappingFragment StoreEntitySet="hotelsProviders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+                <ScalarProperty Name="providerHotelID" ColumnName="providerHotelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelsTransportations">
+            <EntityTypeMapping TypeName="hotelsDBModel.HotelsTransportation">
+              <MappingFragment StoreEntitySet="HotelsTransportations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="TransportationType" ColumnName="TransportationType" />
+                <ScalarProperty Name="TransportationName" ColumnName="TransportationName" />
+                <ScalarProperty Name="Dist" ColumnName="Dist" />
+                <ScalarProperty Name="DistUnit" ColumnName="DistUnit" />
+                <ScalarProperty Name="DistTime" ColumnName="DistTime" />
+                <ScalarProperty Name="DistTimeUnit" ColumnName="DistTimeUnit" />
+                <ScalarProperty Name="Directions" ColumnName="Directions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoTypes">
+            <EntityTypeMapping TypeName="hotelsDBModel.InfoType">
+              <MappingFragment StoreEntitySet="InfoType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InfoTypeCode" ColumnName="InfoTypeCode" />
+                <ScalarProperty Name="InfoType1" ColumnName="InfoType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeisureIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.LeisureID">
+              <MappingFragment StoreEntitySet="LeisureIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LeisureCode" ColumnName="LeisureCode" />
+                <ScalarProperty Name="Leisure" ColumnName="Leisure" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MealsDescriptions">
+            <EntityTypeMapping TypeName="hotelsDBModel.MealsDescription">
+              <MappingFragment StoreEntitySet="MealsDescription">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MealCode" ColumnName="MealCode" />
+                <ScalarProperty Name="MealDescription" ColumnName="MealDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="hotelsDBModel.Provider">
+              <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="providerName" ColumnName="providerName" />
+                <ScalarProperty Name="providerShortcut" ColumnName="providerShortcut" />
+                <ScalarProperty Name="providerUserID" ColumnName="providerUserID" />
+                <ScalarProperty Name="providerPassword" ColumnName="providerPassword" />
+                <ScalarProperty Name="providerCompanyCode" ColumnName="providerCompanyCode" />
+                <ScalarProperty Name="providerDbSource" ColumnName="providerDbSource" />
+                <ScalarProperty Name="providerDbDataFile" ColumnName="providerDbDataFile" />
+                <ScalarProperty Name="providerPhone" ColumnName="providerPhone" />
+                <ScalarProperty Name="providerEmail" ColumnName="providerEmail" />
+                <ScalarProperty Name="providerEndPoint" ColumnName="providerEndPoint" />
+                <ScalarProperty Name="providerDocumentationLink" ColumnName="providerDocumentationLink" />
+                <ScalarProperty Name="providerDocumentationType" ColumnName="providerDocumentationType" />
+                <ScalarProperty Name="providerWebsite" ColumnName="providerWebsite" />
+                <ScalarProperty Name="providerDescription" ColumnName="providerDescription" />
+                <ScalarProperty Name="providerCurrencyCode" ColumnName="providerCurrencyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvidersNationalities">
+            <EntityTypeMapping TypeName="hotelsDBModel.ProvidersNationality">
+              <MappingFragment StoreEntitySet="ProvidersNationalities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="providerNationality" ColumnName="providerNationality" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvidersResidences">
+            <EntityTypeMapping TypeName="hotelsDBModel.ProvidersResidence">
+              <MappingFragment StoreEntitySet="ProvidersResidences">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="providerResidence" ColumnName="providerResidence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvidersSalutations">
+            <EntityTypeMapping TypeName="hotelsDBModel.ProvidersSalutation">
+              <MappingFragment StoreEntitySet="ProvidersSalutations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="salutationCode" ColumnName="salutationCode" />
+                <ScalarProperty Name="salutation" ColumnName="salutation" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="providerSalutation" ColumnName="providerSalutation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RateBasisIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.RateBasisID">
+              <MappingFragment StoreEntitySet="RateBasisIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="rateBasisCode" ColumnName="rateBasisCode" />
+                <ScalarProperty Name="rateBasis" ColumnName="rateBasis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roomAmenities">
+            <EntityTypeMapping TypeName="hotelsDBModel.roomAmenity">
+              <MappingFragment StoreEntitySet="roomAmenities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="roomAmenityCode" ColumnName="roomAmenityCode" />
+                <ScalarProperty Name="roomAmenityName" ColumnName="roomAmenityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecialRequestsIDs">
+            <EntityTypeMapping TypeName="hotelsDBModel.SpecialRequestsID">
+              <MappingFragment StoreEntitySet="SpecialRequestsIDs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="specialRequestCode" ColumnName="specialRequestCode" />
+                <ScalarProperty Name="specialRequest" ColumnName="specialRequest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpDotwHotelsRates">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpDotwHotelsRate">
+              <MappingFragment StoreEntitySet="tmpDotwHotelsRates">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="rateTime" ColumnName="rateTime" />
+                <ScalarProperty Name="rateFrom" ColumnName="rateFrom" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="runno" ColumnName="runno" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpDotwHotelsRatesTests">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpDotwHotelsRatesTest">
+              <MappingFragment StoreEntitySet="tmpDotwHotelsRatesTest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="rateTime" ColumnName="rateTime" />
+                <ScalarProperty Name="rateFrom" ColumnName="rateFrom" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="runno" ColumnName="runno" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="RoomDescription" ColumnName="RoomDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpDotwRoomsCancellations">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpDotwRoomsCancellation">
+              <MappingFragment StoreEntitySet="tmpDotwRoomsCancellation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="optionNo" ColumnName="optionNo" />
+                <ScalarProperty Name="roomTypeNo" ColumnName="roomTypeNo" />
+                <ScalarProperty Name="ruleFromDate" ColumnName="ruleFromDate" />
+                <ScalarProperty Name="ruleToDate" ColumnName="ruleToDate" />
+                <ScalarProperty Name="amendRestricted" ColumnName="amendRestricted" />
+                <ScalarProperty Name="cancelRestricted" ColumnName="cancelRestricted" />
+                <ScalarProperty Name="noShowPolicy" ColumnName="noShowPolicy" />
+                <ScalarProperty Name="amedCharge" ColumnName="amedCharge" />
+                <ScalarProperty Name="cancelCharge" ColumnName="cancelCharge" />
+                <ScalarProperty Name="charge" ColumnName="charge" />
+                <ScalarProperty Name="ruleText" ColumnName="ruleText" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="cancellationType" ColumnName="cancellationType" />
+                <ScalarProperty Name="markupId" ColumnName="markupId" />
+                <ScalarProperty Name="markupAmount" ColumnName="markupAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpDotwRoomsRateDates">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpDotwRoomsRateDate">
+              <MappingFragment StoreEntitySet="tmpDotwRoomsRateDate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="optionNo" ColumnName="optionNo" />
+                <ScalarProperty Name="roomTypeNo" ColumnName="roomTypeNo" />
+                <ScalarProperty Name="rateDate" ColumnName="rateDate" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpDotwRoomsResults">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpDotwRoomsResult">
+              <MappingFragment StoreEntitySet="tmpDotwRoomsResults">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OptionNo" ColumnName="OptionNo" />
+                <ScalarProperty Name="RoomTypeNo" ColumnName="RoomTypeNo" />
+                <ScalarProperty Name="propertyID" ColumnName="propertyID" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+                <ScalarProperty Name="roomTypeID" ColumnName="roomTypeID" />
+                <ScalarProperty Name="mealBasisID" ColumnName="mealBasisID" />
+                <ScalarProperty Name="roomType" ColumnName="roomType" />
+                <ScalarProperty Name="mealBasis" ColumnName="mealBasis" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="bookingToken" ColumnName="bookingToken" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpSearchCriterias">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpSearchCriteria">
+              <MappingFragment StoreEntitySet="tmpSearchCriteria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
+                <ScalarProperty Name="dateTo" ColumnName="dateTo" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+                <ScalarProperty Name="adultsNo" ColumnName="adultsNo" />
+                <ScalarProperty Name="childrenNo" ColumnName="childrenNo" />
+                <ScalarProperty Name="infantsNo" ColumnName="infantsNo" />
+                <ScalarProperty Name="childrenAges" ColumnName="childrenAges" />
+                <ScalarProperty Name="rateBasis" ColumnName="rateBasis" />
+                <ScalarProperty Name="passengerNationality" ColumnName="passengerNationality" />
+                <ScalarProperty Name="passengerCountryResidence" ColumnName="passengerCountryResidence" />
+                <ScalarProperty Name="pos" ColumnName="pos" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="sessionCreatedAt" ColumnName="sessionCreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpTSHotelsRates">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpTSHotelsRate">
+              <MappingFragment StoreEntitySet="tmpTSHotelsRates">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="rateTime" ColumnName="rateTime" />
+                <ScalarProperty Name="rateFrom" ColumnName="rateFrom" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="runno" ColumnName="runno" />
+                <ScalarProperty Name="refHotelID" ColumnName="refHotelID" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpTSRoomsCancelations">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpTSRoomsCancelation">
+              <MappingFragment StoreEntitySet="tmpTSRoomsCancelation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="optionNo" ColumnName="optionNo" />
+                <ScalarProperty Name="roomTypeNo" ColumnName="roomTypeNo" />
+                <ScalarProperty Name="ruleFromDate" ColumnName="ruleFromDate" />
+                <ScalarProperty Name="ruleToDate" ColumnName="ruleToDate" />
+                <ScalarProperty Name="amendRestricted" ColumnName="amendRestricted" />
+                <ScalarProperty Name="cancelRestricted" ColumnName="cancelRestricted" />
+                <ScalarProperty Name="noShowPolicy" ColumnName="noShowPolicy" />
+                <ScalarProperty Name="amedCharge" ColumnName="amedCharge" />
+                <ScalarProperty Name="cancelCharge" ColumnName="cancelCharge" />
+                <ScalarProperty Name="charge" ColumnName="charge" />
+                <ScalarProperty Name="ruleText" ColumnName="ruleText" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="cancellationType" ColumnName="cancellationType" />
+                <ScalarProperty Name="markupId" ColumnName="markupId" />
+                <ScalarProperty Name="markupAmount" ColumnName="markupAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpTSRoomsRateDates">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpTSRoomsRateDate">
+              <MappingFragment StoreEntitySet="tmpTSRoomsRateDate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="optionNo" ColumnName="optionNo" />
+                <ScalarProperty Name="roomTypeNo" ColumnName="roomTypeNo" />
+                <ScalarProperty Name="rateDate" ColumnName="rateDate" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tmpTSRoomsResults">
+            <EntityTypeMapping TypeName="hotelsDBModel.tmpTSRoomsResult">
+              <MappingFragment StoreEntitySet="tmpTSRoomsResults">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OptionNo" ColumnName="OptionNo" />
+                <ScalarProperty Name="RoomTypeNo" ColumnName="RoomTypeNo" />
+                <ScalarProperty Name="propertyID" ColumnName="propertyID" />
+                <ScalarProperty Name="seq" ColumnName="seq" />
+                <ScalarProperty Name="roomTypeID" ColumnName="roomTypeID" />
+                <ScalarProperty Name="mealBasisID" ColumnName="mealBasisID" />
+                <ScalarProperty Name="roomType" ColumnName="roomType" />
+                <ScalarProperty Name="mealBasis" ColumnName="mealBasis" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="RSP" ColumnName="RSP" />
+                <ScalarProperty Name="ErrataData" ColumnName="ErrataData" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="bookingToken" ColumnName="bookingToken" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="allCountries" FunctionName="hotelsDBModel.Store.allCountries" />
+          <FunctionImportMapping FunctionImportName="DeleteFromTMPDOTWHotelRates" FunctionName="hotelsDBModel.Store.DeleteFromTMPDOTWHotelRates" />
+          <FunctionImportMapping FunctionImportName="Dotw_Hotels_Rates" FunctionName="hotelsDBModel.Store.Dotw_Hotels_Rates" />
+          <FunctionImportMapping FunctionImportName="Dotw_Hotels_Rates_Async" FunctionName="hotelsDBModel.Store.Dotw_Hotels_Rates_Async" />
+          <FunctionImportMapping FunctionImportName="Dotw_Hotels_Rates_Test" FunctionName="hotelsDBModel.Store.Dotw_Hotels_Rates_Test" />
+          <FunctionImportMapping FunctionImportName="Dotw_Hotels_Rooms_Cancellation" FunctionName="hotelsDBModel.Store.Dotw_Hotels_Rooms_Cancellation" />
+          <FunctionImportMapping FunctionImportName="Dotw_Hotels_Rooms_Rate_Date" FunctionName="hotelsDBModel.Store.Dotw_Hotels_Rooms_Rate_Date" />
+          <FunctionImportMapping FunctionImportName="Dotw_Hotels_Rooms_Results" FunctionName="hotelsDBModel.Store.Dotw_Hotels_Rooms_Results" />
+          <FunctionImportMapping FunctionImportName="GetAllCities" FunctionName="hotelsDBModel.Store.GetAllCities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetAllCities_Result">
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="countrycode" ColumnName="countrycode" />
+                <ScalarProperty Name="cityid" ColumnName="cityid" />
+                <ScalarProperty Name="providercity" ColumnName="providercity" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllCountries" FunctionName="hotelsDBModel.Store.GetAllCountries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetAllCountries_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="phoneCode" ColumnName="phoneCode" />
+                <ScalarProperty Name="countryid" ColumnName="countryid" />
+                <ScalarProperty Name="providercountry" ColumnName="providercountry" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="regionCode" ColumnName="regionCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllMealCodes" FunctionName="hotelsDBModel.Store.GetAllMealCodes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetAllMealCodes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MealCode" ColumnName="MealCode" />
+                <ScalarProperty Name="MealDescription" ColumnName="MealDescription" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBookItineraryWithBookingNo" FunctionName="hotelsDBModel.Store.GetBookItineraryWithBookingNo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetBookItineraryWithBookingNo_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Booking_No" ColumnName="Booking_No" />
+                <ScalarProperty Name="BookItinerary_No" ColumnName="BookItinerary_No" />
+                <ScalarProperty Name="Room_No" ColumnName="Room_No" />
+                <ScalarProperty Name="ServiceReference" ColumnName="ServiceReference" />
+                <ScalarProperty Name="ProviderPrice" ColumnName="ProviderPrice" />
+                <ScalarProperty Name="AllocationDetails" ColumnName="AllocationDetails" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCitiesForHotels" FunctionName="hotelsDBModel.Store.GetCitiesForHotels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCitiesForHotels_Result">
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="countrycode" ColumnName="countrycode" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCityById" FunctionName="hotelsDBModel.Store.GetCityById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCityById_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="Downloaded" ColumnName="Downloaded" />
+                <ScalarProperty Name="City_Ar" ColumnName="City_Ar" />
+                <ScalarProperty Name="countryName_Ar" ColumnName="countryName_Ar" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCityByName" FunctionName="hotelsDBModel.Store.GetCityByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCityByName_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="Downloaded" ColumnName="Downloaded" />
+                <ScalarProperty Name="City_Ar" ColumnName="City_Ar" />
+                <ScalarProperty Name="countryName_Ar" ColumnName="countryName_Ar" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCityTaxById" FunctionName="hotelsDBModel.Store.GetCityTaxById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCityTaxById_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCityToursimTaxBycityId" FunctionName="hotelsDBModel.Store.GetCityToursimTaxBycityId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCityToursimTaxBycityId_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="StarRating" ColumnName="StarRating" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCityToursimTaxBycityIdandRate" FunctionName="hotelsDBModel.Store.GetCityToursimTaxBycityIdandRate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCityToursimTaxBycityIdandRate_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="StarRating" ColumnName="StarRating" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCounrtyByName" FunctionName="hotelsDBModel.Store.GetCounrtyByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCounrtyByName_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCountriesForHotels" FunctionName="hotelsDBModel.Store.GetCountriesForHotels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCountriesForHotels_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="phoneCode" ColumnName="phoneCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="regionCode" ColumnName="regionCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCountryByCountryCode" FunctionName="hotelsDBModel.Store.GetCountryByCountryCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCountryByCountryCode_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="providerCountry" ColumnName="providerCountry" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCountryById" FunctionName="hotelsDBModel.Store.GetCountryById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetCountryById_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHotelData" FunctionName="hotelsDBModel.Store.GetHotelData" />
+          <FunctionImportMapping FunctionImportName="GetHotelDataByHotelID" FunctionName="hotelsDBModel.Store.GetHotelDataByHotelID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetHotelDataByHotelID_Result">
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+                <ScalarProperty Name="hotelName" ColumnName="hotelName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="hotelCheckIN" ColumnName="hotelCheckIN" />
+                <ScalarProperty Name="hotelCheckOut" ColumnName="hotelCheckOut" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHotelNameAndHotelId" FunctionName="hotelsDBModel.Store.GetHotelNameAndHotelId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetHotelNameAndHotelId_Result">
+                <ScalarProperty Name="hotelname" ColumnName="hotelname" />
+                <ScalarProperty Name="hotelID" ColumnName="hotelID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHotelsIdsByCityId" FunctionName="hotelsDBModel.Store.GetHotelsIdsByCityId" />
+          <FunctionImportMapping FunctionImportName="GetImagesByHotelID" FunctionName="hotelsDBModel.Store.GetImagesByHotelID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetImagesByHotelID_Result">
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="category" ColumnName="category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProviderCityandIdBy" FunctionName="hotelsDBModel.Store.GetProviderCityandIdBy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetProviderCityandIdBy_Result">
+                <ScalarProperty Name="providerCity" ColumnName="providerCity" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProviderCityAndIdByCityID" FunctionName="hotelsDBModel.Store.GetProviderCityAndIdByCityID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetProviderCityAndIdByCityID_Result">
+                <ScalarProperty Name="providerCity" ColumnName="providerCity" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProviderCurrency" FunctionName="hotelsDBModel.Store.GetProviderCurrency">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetProviderCurrency_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="providerCurrencyCode" ColumnName="providerCurrencyCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProviderData" FunctionName="hotelsDBModel.Store.GetProviderData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetProviderData_Result">
+                <ScalarProperty Name="provideruserid" ColumnName="provideruserid" />
+                <ScalarProperty Name="providerpassword" ColumnName="providerpassword" />
+                <ScalarProperty Name="providercompanycode" ColumnName="providercompanycode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProviderSalutation_Nationality_Residence" FunctionName="hotelsDBModel.Store.GetProviderSalutation_Nationality_Residence">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetProviderSalutation_Nationality_Residence_Result">
+                <ScalarProperty Name="providersalutation" ColumnName="providersalutation" />
+                <ScalarProperty Name="providerNationality" ColumnName="providerNationality" />
+                <ScalarProperty Name="providerresidence" ColumnName="providerresidence" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRoomImageByHotelId" FunctionName="hotelsDBModel.Store.GetRoomImageByHotelId" />
+          <FunctionImportMapping FunctionImportName="GetSearchCriteriaBySID" FunctionName="hotelsDBModel.Store.GetSearchCriteriaBySID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetSearchCriteriaBySID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
+                <ScalarProperty Name="dateTo" ColumnName="dateTo" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+                <ScalarProperty Name="adultsNo" ColumnName="adultsNo" />
+                <ScalarProperty Name="childrenNo" ColumnName="childrenNo" />
+                <ScalarProperty Name="infantsNo" ColumnName="infantsNo" />
+                <ScalarProperty Name="childrenAges" ColumnName="childrenAges" />
+                <ScalarProperty Name="rateBasis" ColumnName="rateBasis" />
+                <ScalarProperty Name="passengerNationality" ColumnName="passengerNationality" />
+                <ScalarProperty Name="passengerCountryResidence" ColumnName="passengerCountryResidence" />
+                <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+                <ScalarProperty Name="sessionCreatedAt" ColumnName="sessionCreatedAt" />
+                <ScalarProperty Name="pos" ColumnName="pos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSearchHotelList" FunctionName="hotelsDBModel.Store.GetSearchHotelList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetSearchHotelList_Result">
+                <ScalarProperty Name="hotelname" ColumnName="hotelname" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="ratefrom" ColumnName="ratefrom" />
+                <ScalarProperty Name="providerid" ColumnName="providerid" />
+                <ScalarProperty Name="providerhotelid" ColumnName="providerhotelid" />
+                <ScalarProperty Name="providerhotelcode" ColumnName="providerhotelcode" />
+                <ScalarProperty Name="hotelid" ColumnName="hotelid" />
+                <ScalarProperty Name="thum" ColumnName="thum" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSearchHotelListTest" FunctionName="hotelsDBModel.Store.GetSearchHotelListTest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetSearchHotelListTest_Result">
+                <ScalarProperty Name="hotelname" ColumnName="hotelname" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="ratefrom" ColumnName="ratefrom" />
+                <ScalarProperty Name="providerid" ColumnName="providerid" />
+                <ScalarProperty Name="RoomDescription" ColumnName="RoomDescription" />
+                <ScalarProperty Name="providerhotelid" ColumnName="providerhotelid" />
+                <ScalarProperty Name="providerhotelcode" ColumnName="providerhotelcode" />
+                <ScalarProperty Name="hotelid" ColumnName="hotelid" />
+                <ScalarProperty Name="thum" ColumnName="thum" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SaveSearchCriteria" FunctionName="hotelsDBModel.Store.SaveSearchCriteria" />
+          <FunctionImportMapping FunctionImportName="TS_Hotels_Rates" FunctionName="hotelsDBModel.Store.TS_Hotels_Rates" />
+          <FunctionImportMapping FunctionImportName="TS_Hotels_Rooms_Cancellation" FunctionName="hotelsDBModel.Store.TS_Hotels_Rooms_Cancellation" />
+          <FunctionImportMapping FunctionImportName="TS_Hotels_Rooms_Rate_Date" FunctionName="hotelsDBModel.Store.TS_Hotels_Rooms_Rate_Date" />
+          <FunctionImportMapping FunctionImportName="TS_Hotels_Rooms_Results" FunctionName="hotelsDBModel.Store.TS_Hotels_Rooms_Results" />
+          <FunctionImportMapping FunctionImportName="GetHotelsIDAndProvidersByCityName" FunctionName="hotelsDBModel.Store.GetHotelsIDAndProvidersByCityName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetHotelsIDAndProvidersByCityName_Result">
+                <ScalarProperty Name="providerHotelID" ColumnName="providerHotelID" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHotelsIdsByCityName" FunctionName="hotelsDBModel.Store.GetHotelsIdsByCityName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hotelsDBModel.GetHotelsIdsByCityName_Result">
+                <ScalarProperty Name="providerHotelID" ColumnName="providerHotelID" />
+                <ScalarProperty Name="providerID" ColumnName="providerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

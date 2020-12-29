@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BusinessRulesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChargeTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Charge_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Criterias_Difinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="criteriaName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Currency_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Currency_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Is_Base_Currency" Type="bit" Nullable="false" />
+          <Property Name="Image_Url" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DailyCurrencies">
+          <Key>
+            <PropertyRef Name="FromCurrency" />
+            <PropertyRef Name="ToCurrency" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromCurrency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToCurrency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Customer_Purchase_Rate" Type="float" Nullable="false" />
+          <Property Name="Customer_Sell_Rate" Type="float" Nullable="false" />
+          <Property Name="Supplier_Purchase_Rate" Type="float" Nullable="false" />
+          <Property Name="Supplier_Sell_Rate" Type="float" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveryDayCurrenciesConversion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromCurrency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToCurrency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="Customer_Purchase_Rate" Type="float" Nullable="false" />
+          <Property Name="Customer_Sell_Rate" Type="float" Nullable="false" />
+          <Property Name="Supplier_Purchase_Rate" Type="float" Nullable="false" />
+          <Property Name="Supplier_Sell_Rate" Type="float" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FormOfPayment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormofPayment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HistoryDailyCurrencies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromCurrency" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToCurrency" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Customer_Purchase_Rate" Type="float" Nullable="false" />
+          <Property Name="Customer_Sell_Rate" Type="float" Nullable="false" />
+          <Property Name="Supplier_Purchase_Rate" Type="float" Nullable="false" />
+          <Property Name="Supplier_Sell_Rate" Type="float" Nullable="false" />
+          <Property Name="Agent" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HotelProviders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provider_ID" Type="int" />
+          <Property Name="Provider_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Provider_Currency_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active_Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="PointOfSale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProvidersCurrencies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provider_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provider_Currency_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Currency_Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RelatedUnits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalesDiscountCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountID" Type="varchar" MaxLength="255" />
+          <Property Name="DiscountCriteria" Type="varchar" MaxLength="255" />
+          <Property Name="CriteriaValue" Type="varchar(max)" />
+          <Property Name="CriteriaValueText" Type="varchar(max)" />
+          <Property Name="operation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalesDiscounts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiscountName" Type="varchar" MaxLength="50" />
+          <Property Name="DiscountBranch" Type="varchar" MaxLength="50" />
+          <Property Name="DiscountProduct" Type="varchar" MaxLength="50" />
+          <Property Name="CommType" Type="varchar" MaxLength="50" />
+          <Property Name="CommAmt" Type="float" />
+          <Property Name="CommRelatedUnit" Type="varchar" MaxLength="50" />
+          <Property Name="CommRound" Type="varchar" MaxLength="50" />
+          <Property Name="DiscountPriority" Type="int" />
+          <Property Name="ChargeId" Type="int" />
+          <Property Name="DiscountBase" Type="varchar" MaxLength="50" />
+          <Property Name="DiscountStatus" Type="bit" />
+          <Property Name="DiscountStartDate" Type="date" />
+          <Property Name="DiscountEndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="SalesMarkupCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkupID" Type="varchar" MaxLength="255" />
+          <Property Name="MarkupCriteria" Type="varchar" MaxLength="255" />
+          <Property Name="CriteriaValue" Type="varchar(max)" />
+          <Property Name="CriteriaValueText" Type="varchar(max)" />
+          <Property Name="operation" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalesMarkups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkupName" Type="varchar" MaxLength="50" />
+          <Property Name="MarkupBranch" Type="varchar" MaxLength="50" />
+          <Property Name="MarkupProduct" Type="varchar" MaxLength="50" />
+          <Property Name="CommType" Type="varchar" MaxLength="50" />
+          <Property Name="CommAmt" Type="float" />
+          <Property Name="CommRelatedUnit" Type="varchar" MaxLength="50" />
+          <Property Name="CommRound" Type="varchar" MaxLength="50" />
+          <Property Name="MarkupPriority" Type="int" />
+          <Property Name="ChargeId" Type="int" />
+          <Property Name="MarkupBase" Type="varchar" MaxLength="50" />
+          <Property Name="MarkupStatus" Type="bit" />
+          <Property Name="MarkupStartDate" Type="date" />
+          <Property Name="MarkupEndDate" Type="date" />
+          <Property Name="MarkUpType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalesRulesFlightOptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="225" />
+          <Property Name="CategotyId" Type="nvarchar" MaxLength="225" />
+          <Property Name="AllowMultiAirlines" Type="bit" />
+          <Property Name="AllowMultiDestination" Type="bit" />
+        </EntityType>
+        <EntityType Name="SourceTraffic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code" Type="int" />
+        </EntityType>
+        <Function Name="GetActiveProviders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BusinessRulesDBModelStoreContainer">
+          <EntitySet Name="ChargeTypes" EntityType="Self.ChargeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Criterias_Difinition" EntityType="Self.Criterias_Difinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyCurrencies" EntityType="Self.DailyCurrencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EveryDayCurrenciesConversion" EntityType="Self.EveryDayCurrenciesConversion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormOfPayment" EntityType="Self.FormOfPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoryDailyCurrencies" EntityType="Self.HistoryDailyCurrencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelProviders" EntityType="Self.HotelProviders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PointOfSale" EntityType="Self.PointOfSale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductTypes" EntityType="Self.ProductTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvidersCurrencies" EntityType="Self.ProvidersCurrencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatedUnits" EntityType="Self.RelatedUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesDiscountCriteria" EntityType="Self.SalesDiscountCriteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesDiscounts" EntityType="Self.SalesDiscounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesMarkupCriteria" EntityType="Self.SalesMarkupCriteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesMarkups" EntityType="Self.SalesMarkups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesRulesFlightOptions" EntityType="Self.SalesRulesFlightOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SourceTraffic" EntityType="Self.SourceTraffic" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BusinessRulesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChargeType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Charge_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Criterias_Difinition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="criteriaName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Is_Base_Currency" Type="Boolean" Nullable="false" />
+          <Property Name="Image_Url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DailyCurrency">
+          <Key>
+            <PropertyRef Name="FromCurrency" />
+            <PropertyRef Name="ToCurrency" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ToCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Customer_Purchase_Rate" Type="Double" Nullable="false" />
+          <Property Name="Customer_Sell_Rate" Type="Double" Nullable="false" />
+          <Property Name="Supplier_Purchase_Rate" Type="Double" Nullable="false" />
+          <Property Name="Supplier_Sell_Rate" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EveryDayCurrenciesConversion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ToCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Customer_Purchase_Rate" Type="Double" Nullable="false" />
+          <Property Name="Customer_Sell_Rate" Type="Double" Nullable="false" />
+          <Property Name="Supplier_Purchase_Rate" Type="Double" Nullable="false" />
+          <Property Name="Supplier_Sell_Rate" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FormOfPayment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormofPayment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HistoryDailyCurrency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ToCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Customer_Purchase_Rate" Type="Double" Nullable="false" />
+          <Property Name="Customer_Sell_Rate" Type="Double" Nullable="false" />
+          <Property Name="Supplier_Purchase_Rate" Type="Double" Nullable="false" />
+          <Property Name="Supplier_Sell_Rate" Type="Double" Nullable="false" />
+          <Property Name="Agent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotelProvider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provider_ID" Type="Int32" />
+          <Property Name="Provider_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Provider_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active_Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PointOfSale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProvidersCurrency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provider_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provider_Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Currency_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RelatedUnit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesDiscountCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountCriteria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaValueText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SalesDiscount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiscountName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommAmt" Type="Double" />
+          <Property Name="CommRelatedUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommRound" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountPriority" Type="Int32" />
+          <Property Name="ChargeId" Type="Int32" />
+          <Property Name="DiscountBase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiscountStatus" Type="Boolean" />
+          <Property Name="DiscountStartDate" Type="DateTime" Precision="0" />
+          <Property Name="DiscountEndDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="SalesMarkupCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkupID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MarkupCriteria" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CriteriaValueText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SalesMarkup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MarkupBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MarkupProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommAmt" Type="Double" />
+          <Property Name="CommRelatedUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CommRound" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MarkupPriority" Type="Int32" />
+          <Property Name="ChargeId" Type="Int32" />
+          <Property Name="MarkupBase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MarkupStatus" Type="Boolean" />
+          <Property Name="MarkupStartDate" Type="DateTime" Precision="0" />
+          <Property Name="MarkupEndDate" Type="DateTime" Precision="0" />
+          <Property Name="MarkUpType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalesRulesFlightOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="CategotyId" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="AllowMultiAirlines" Type="Boolean" />
+          <Property Name="AllowMultiDestination" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SourceTraffic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="BusinessRulesDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChargeTypes" EntityType="Self.ChargeType" />
+          <EntitySet Name="Criterias_Difinition" EntityType="Self.Criterias_Difinition" />
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="DailyCurrencies" EntityType="Self.DailyCurrency" />
+          <EntitySet Name="EveryDayCurrenciesConversions" EntityType="Self.EveryDayCurrenciesConversion" />
+          <EntitySet Name="FormOfPayments" EntityType="Self.FormOfPayment" />
+          <EntitySet Name="HistoryDailyCurrencies" EntityType="Self.HistoryDailyCurrency" />
+          <EntitySet Name="HotelProviders" EntityType="Self.HotelProvider" />
+          <EntitySet Name="PointOfSales" EntityType="Self.PointOfSale" />
+          <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
+          <EntitySet Name="ProvidersCurrencies" EntityType="Self.ProvidersCurrency" />
+          <EntitySet Name="RelatedUnits" EntityType="Self.RelatedUnit" />
+          <EntitySet Name="SalesDiscountCriterias" EntityType="Self.SalesDiscountCriteria" />
+          <EntitySet Name="SalesDiscounts" EntityType="Self.SalesDiscount" />
+          <EntitySet Name="SalesMarkupCriterias" EntityType="Self.SalesMarkupCriteria" />
+          <EntitySet Name="SalesMarkups" EntityType="Self.SalesMarkup" />
+          <EntitySet Name="SalesRulesFlightOptions" EntityType="Self.SalesRulesFlightOption" />
+          <EntitySet Name="SourceTraffics" EntityType="Self.SourceTraffic" />
+          <FunctionImport Name="GetActiveProviders" ReturnType="Collection(BusinessRulesDBModel.GetActiveProviders_Result)" />
+        </EntityContainer>
+        <ComplexType Name="GetActiveProviders_Result">
+          <Property Type="Int32" Name="Provider_ID" Nullable="true" />
+          <Property Type="String" Name="Provider_Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Provider_Currency_Code" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BusinessRulesDBModelStoreContainer" CdmEntityContainer="BusinessRulesDBEntities">
+          <EntitySetMapping Name="ChargeTypes">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.ChargeType">
+              <MappingFragment StoreEntitySet="ChargeTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Charge_Type" ColumnName="Charge_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Criterias_Difinition">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.Criterias_Difinition">
+              <MappingFragment StoreEntitySet="Criterias_Difinition">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="criteriaName" ColumnName="criteriaName" />
+                <ScalarProperty Name="category" ColumnName="category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.Currency">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+                <ScalarProperty Name="Currency_Name" ColumnName="Currency_Name" />
+                <ScalarProperty Name="Is_Base_Currency" ColumnName="Is_Base_Currency" />
+                <ScalarProperty Name="Image_Url" ColumnName="Image_Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyCurrencies">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.DailyCurrency">
+              <MappingFragment StoreEntitySet="DailyCurrencies">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FromCurrency" ColumnName="FromCurrency" />
+                <ScalarProperty Name="ToCurrency" ColumnName="ToCurrency" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Customer_Purchase_Rate" ColumnName="Customer_Purchase_Rate" />
+                <ScalarProperty Name="Customer_Sell_Rate" ColumnName="Customer_Sell_Rate" />
+                <ScalarProperty Name="Supplier_Purchase_Rate" ColumnName="Supplier_Purchase_Rate" />
+                <ScalarProperty Name="Supplier_Sell_Rate" ColumnName="Supplier_Sell_Rate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EveryDayCurrenciesConversions">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.EveryDayCurrenciesConversion">
+              <MappingFragment StoreEntitySet="EveryDayCurrenciesConversion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FromCurrency" ColumnName="FromCurrency" />
+                <ScalarProperty Name="ToCurrency" ColumnName="ToCurrency" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Customer_Purchase_Rate" ColumnName="Customer_Purchase_Rate" />
+                <ScalarProperty Name="Customer_Sell_Rate" ColumnName="Customer_Sell_Rate" />
+                <ScalarProperty Name="Supplier_Purchase_Rate" ColumnName="Supplier_Purchase_Rate" />
+                <ScalarProperty Name="Supplier_Sell_Rate" ColumnName="Supplier_Sell_Rate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormOfPayments">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.FormOfPayment">
+              <MappingFragment StoreEntitySet="FormOfPayment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FormofPayment1" ColumnName="FormofPayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryDailyCurrencies">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.HistoryDailyCurrency">
+              <MappingFragment StoreEntitySet="HistoryDailyCurrencies">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FromCurrency" ColumnName="FromCurrency" />
+                <ScalarProperty Name="ToCurrency" ColumnName="ToCurrency" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Customer_Purchase_Rate" ColumnName="Customer_Purchase_Rate" />
+                <ScalarProperty Name="Customer_Sell_Rate" ColumnName="Customer_Sell_Rate" />
+                <ScalarProperty Name="Supplier_Purchase_Rate" ColumnName="Supplier_Purchase_Rate" />
+                <ScalarProperty Name="Supplier_Sell_Rate" ColumnName="Supplier_Sell_Rate" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelProviders">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.HotelProvider">
+              <MappingFragment StoreEntitySet="HotelProviders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Provider_ID" ColumnName="Provider_ID" />
+                <ScalarProperty Name="Provider_Name" ColumnName="Provider_Name" />
+                <ScalarProperty Name="Provider_Currency_Code" ColumnName="Provider_Currency_Code" />
+                <ScalarProperty Name="Active_Status" ColumnName="Active_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PointOfSales">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.PointOfSale">
+              <MappingFragment StoreEntitySet="PointOfSale">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Name_Code" ColumnName="Name_Code" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTypes">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.ProductType">
+              <MappingFragment StoreEntitySet="ProductTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProvidersCurrencies">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.ProvidersCurrency">
+              <MappingFragment StoreEntitySet="ProvidersCurrencies">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Provider_Id" ColumnName="Provider_Id" />
+                <ScalarProperty Name="Provider_Currency_Code" ColumnName="Provider_Currency_Code" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatedUnits">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.RelatedUnit">
+              <MappingFragment StoreEntitySet="RelatedUnits">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesDiscountCriterias">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.SalesDiscountCriteria">
+              <MappingFragment StoreEntitySet="SalesDiscountCriteria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="DiscountCriteria" ColumnName="DiscountCriteria" />
+                <ScalarProperty Name="CriteriaValue" ColumnName="CriteriaValue" />
+                <ScalarProperty Name="CriteriaValueText" ColumnName="CriteriaValueText" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesDiscounts">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.SalesDiscount">
+              <MappingFragment StoreEntitySet="SalesDiscounts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DiscountName" ColumnName="DiscountName" />
+                <ScalarProperty Name="DiscountBranch" ColumnName="DiscountBranch" />
+                <ScalarProperty Name="DiscountProduct" ColumnName="DiscountProduct" />
+                <ScalarProperty Name="CommType" ColumnName="CommType" />
+                <ScalarProperty Name="CommAmt" ColumnName="CommAmt" />
+                <ScalarProperty Name="CommRelatedUnit" ColumnName="CommRelatedUnit" />
+                <ScalarProperty Name="CommRound" ColumnName="CommRound" />
+                <ScalarProperty Name="DiscountPriority" ColumnName="DiscountPriority" />
+                <ScalarProperty Name="ChargeId" ColumnName="ChargeId" />
+                <ScalarProperty Name="DiscountBase" ColumnName="DiscountBase" />
+                <ScalarProperty Name="DiscountStatus" ColumnName="DiscountStatus" />
+                <ScalarProperty Name="DiscountStartDate" ColumnName="DiscountStartDate" />
+                <ScalarProperty Name="DiscountEndDate" ColumnName="DiscountEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesMarkupCriterias">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.SalesMarkupCriteria">
+              <MappingFragment StoreEntitySet="SalesMarkupCriteria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MarkupID" ColumnName="MarkupID" />
+                <ScalarProperty Name="MarkupCriteria" ColumnName="MarkupCriteria" />
+                <ScalarProperty Name="CriteriaValue" ColumnName="CriteriaValue" />
+                <ScalarProperty Name="CriteriaValueText" ColumnName="CriteriaValueText" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesMarkups">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.SalesMarkup">
+              <MappingFragment StoreEntitySet="SalesMarkups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MarkupName" ColumnName="MarkupName" />
+                <ScalarProperty Name="MarkupBranch" ColumnName="MarkupBranch" />
+                <ScalarProperty Name="MarkupProduct" ColumnName="MarkupProduct" />
+                <ScalarProperty Name="CommType" ColumnName="CommType" />
+                <ScalarProperty Name="CommAmt" ColumnName="CommAmt" />
+                <ScalarProperty Name="CommRelatedUnit" ColumnName="CommRelatedUnit" />
+                <ScalarProperty Name="CommRound" ColumnName="CommRound" />
+                <ScalarProperty Name="MarkupPriority" ColumnName="MarkupPriority" />
+                <ScalarProperty Name="ChargeId" ColumnName="ChargeId" />
+                <ScalarProperty Name="MarkupBase" ColumnName="MarkupBase" />
+                <ScalarProperty Name="MarkupStatus" ColumnName="MarkupStatus" />
+                <ScalarProperty Name="MarkupStartDate" ColumnName="MarkupStartDate" />
+                <ScalarProperty Name="MarkupEndDate" ColumnName="MarkupEndDate" />
+                <ScalarProperty Name="MarkUpType" ColumnName="MarkUpType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesRulesFlightOptions">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.SalesRulesFlightOption">
+              <MappingFragment StoreEntitySet="SalesRulesFlightOptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="CategotyId" ColumnName="CategotyId" />
+                <ScalarProperty Name="AllowMultiAirlines" ColumnName="AllowMultiAirlines" />
+                <ScalarProperty Name="AllowMultiDestination" ColumnName="AllowMultiDestination" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SourceTraffics">
+            <EntityTypeMapping TypeName="BusinessRulesDBModel.SourceTraffic">
+              <MappingFragment StoreEntitySet="SourceTraffic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetActiveProviders" FunctionName="BusinessRulesDBModel.Store.GetActiveProviders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BusinessRulesDBModel.GetActiveProviders_Result">
+                <ScalarProperty Name="Provider_ID" ColumnName="Provider_ID" />
+                <ScalarProperty Name="Provider_Name" ColumnName="Provider_Name" />
+                <ScalarProperty Name="Provider_Currency_Code" ColumnName="Provider_Currency_Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

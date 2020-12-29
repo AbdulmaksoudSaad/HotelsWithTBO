@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{412BCF5D-D109-42C7-9AFD-40810DE8B6B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IntegrationTotalStay</RootNamespace>
+    <AssemblyName>IntegrationTotalStay</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Controller\CheckAvailability.cs" />
+    <Compile Include="Controller\ConfirmationTS.cs" />
+    <Compile Include="Controller\SearchTs.cs" />
+    <Compile Include="Management\AvailabiltyManager.cs" />
+    <Compile Include="Management\BookingManager.cs" />
+    <Compile Include="Management\SearchManager.cs" />
+    <Compile Include="Model\Booking\BookingResp.cs" />
+    <Compile Include="Model\Availability\TsAvailReq.cs" />
+    <Compile Include="Model\Availability\TsAvaiRes.cs" />
+    <Compile Include="Model\Booking\BookingReq.cs" />
+    <Compile Include="Model\TsRequest.cs" />
+    <Compile Include="Model\TsResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BookingSer.cs" />
+    <Compile Include="Service\CheckAvailabilty.cs" />
+    <Compile Include="Service\SearchServ.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hotels.Common\Hotels.Common.csproj">
+      <Project>{17b259a8-71f0-47e3-899d-d0277ef74ff9}</Project>
+      <Name>Hotels.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

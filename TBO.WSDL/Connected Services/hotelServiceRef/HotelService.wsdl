@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://TekTravel/HotelBookingApi" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://TekTravel/HotelBookingApi" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://TekTravel/HotelBookingApi/Imports">
+      <xsd:import schemaLocation="https://api.tbotechnology.in/HotelAPI_V7/HotelService.svc?xsd=xsd0" namespace="http://TekTravel/HotelBookingApi" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="HotelSearchRequest">
+    <wsdl:part name="parameters" element="tns:HotelSearchRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelSearchRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelSearchResponse">
+    <wsdl:part name="parameters" element="tns:HotelSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelRoomAvailabilityRequest">
+    <wsdl:part name="parameters" element="tns:HotelRoomAvailabilityRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelRoomAvailabilityRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelRoomAvailabilityResponse">
+    <wsdl:part name="parameters" element="tns:HotelRoomAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelCancellationPolicyRequest">
+    <wsdl:part name="parameters" element="tns:HotelCancellationPolicyRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelCancellationPolicyRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelCancellationPolicyResponse">
+    <wsdl:part name="parameters" element="tns:HotelCancellationPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookRequest">
+    <wsdl:part name="parameters" element="tns:HotelBookRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookResponse">
+    <wsdl:part name="parameters" element="tns:HotelBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="AvailabilityAndPricingRequest">
+    <wsdl:part name="parameters" element="tns:AvailabilityAndPricingRequest" />
+  </wsdl:message>
+  <wsdl:message name="AvailabilityAndPricingRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="AvailabilityAndPricingResponse">
+    <wsdl:part name="parameters" element="tns:AvailabilityAndPricingResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookingDetailRequest">
+    <wsdl:part name="parameters" element="tns:HotelBookingDetailRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookingDetailRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookingDetailResponse">
+    <wsdl:part name="parameters" element="tns:HotelBookingDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateInvoiceRequest">
+    <wsdl:part name="parameters" element="tns:GenerateInvoiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GenerateInvoiceRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="GenerateInvoiceResponse">
+    <wsdl:part name="parameters" element="tns:GenerateInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AmendmentRequest">
+    <wsdl:part name="parameters" element="tns:AmendmentRequest" />
+  </wsdl:message>
+  <wsdl:message name="AmendmentRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="AmendmentResponse">
+    <wsdl:part name="parameters" element="tns:AmendmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelCancelRequest">
+    <wsdl:part name="parameters" element="tns:HotelCancelRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelCancelRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelCancelResponse">
+    <wsdl:part name="parameters" element="tns:HotelCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="CountryListRequest">
+    <wsdl:part name="parameters" element="tns:CountryListRequest" />
+  </wsdl:message>
+  <wsdl:message name="CountryListRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="CountryListResponse">
+    <wsdl:part name="parameters" element="tns:CountryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DestinationCityListRequest">
+    <wsdl:part name="parameters" element="tns:DestinationCityListRequest" />
+  </wsdl:message>
+  <wsdl:message name="DestinationCityListRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="DestinationCityListResponse">
+    <wsdl:part name="parameters" element="tns:DestinationCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopDestinationsRequest">
+    <wsdl:part name="parameters" element="tns:TopDestinationsRequest" />
+  </wsdl:message>
+  <wsdl:message name="TopDestinationsRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="TopDestinationsResponse">
+    <wsdl:part name="parameters" element="tns:TopDestinationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelDetailsRequest">
+    <wsdl:part name="parameters" element="tns:HotelDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelDetailsRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelDetailsResponse">
+    <wsdl:part name="parameters" element="tns:HotelDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelCodesRequest">
+    <wsdl:part name="parameters" element="tns:HotelCodesRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelCodesRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelCodesResponse">
+    <wsdl:part name="parameters" element="tns:HotelCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelSearchWithRoomsRequest">
+    <wsdl:part name="parameters" element="tns:HotelSearchWithRoomsRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelSearchWithRoomsRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelSearchWithRoomsResponse">
+    <wsdl:part name="parameters" element="tns:HotelSearchWithRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookingDetailBasedOnDateRequest">
+    <wsdl:part name="parameters" element="tns:HotelBookingDetailBasedOnDateRequest" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookingDetailBasedOnDateRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="HotelBookingDetailBasedOnDateResponse">
+    <wsdl:part name="parameters" element="tns:HotelBookingDetailBasedOnDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GiataHotelCodesRequest">
+    <wsdl:part name="parameters" element="tns:GiataHotelCodesRequest" />
+  </wsdl:message>
+  <wsdl:message name="GiataHotelCodesRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="GiataHotelCodesResponse">
+    <wsdl:part name="parameters" element="tns:GiataHotelCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TBOHotelCodesRequest">
+    <wsdl:part name="parameters" element="tns:TBOHotelCodesRequest" />
+  </wsdl:message>
+  <wsdl:message name="TBOHotelCodesRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="TBOHotelCodesResponse">
+    <wsdl:part name="parameters" element="tns:TBOHotelCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="TagInfoRequest">
+    <wsdl:part name="parameters" element="tns:TagInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="TagInfoRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="TagInfoResponse">
+    <wsdl:part name="parameters" element="tns:TagInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CityWiseNotificationRequest">
+    <wsdl:part name="parameters" element="tns:CityWiseNotificationRequest" />
+  </wsdl:message>
+  <wsdl:message name="CityWiseNotificationRequest_Headers">
+    <wsdl:part name="Credentials" element="tns:Credentials" />
+  </wsdl:message>
+  <wsdl:message name="CityWiseNotificationResponse">
+    <wsdl:part name="parameters" element="tns:CityWiseNotificationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IHotelService">
+    <wsdl:operation name="HotelSearch">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelSearch" name="HotelSearchRequest" message="tns:HotelSearchRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelSearchResponse" name="HotelSearchResponse" message="tns:HotelSearchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AvailableHotelRooms">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/AvailableHotelRooms" name="HotelRoomAvailabilityRequest" message="tns:HotelRoomAvailabilityRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/AvailableHotelRoomsResponse" name="HotelRoomAvailabilityResponse" message="tns:HotelRoomAvailabilityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelCancellationPolicy">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelCancellationPolicy" name="HotelCancellationPolicyRequest" message="tns:HotelCancellationPolicyRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelCancellationPolicyResponse" name="HotelCancellationPolicyResponse" message="tns:HotelCancellationPolicyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelCancellationPolicyForAllRooms">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelCancellationPolicyForAllRooms" name="HotelCancellationPolicyRequest" message="tns:HotelCancellationPolicyRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelCancellationPolicyForAllRoomsResponse" name="HotelCancellationPolicyResponse" message="tns:HotelCancellationPolicyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelBook">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelBook" name="HotelBookRequest" message="tns:HotelBookRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelBookResponse" name="HotelBookResponse" message="tns:HotelBookResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AvailabilityAndPricing">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/AvailabilityAndPricing" name="AvailabilityAndPricingRequest" message="tns:AvailabilityAndPricingRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/AvailabilityAndPricingResponse" name="AvailabilityAndPricingResponse" message="tns:AvailabilityAndPricingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelBookingDetail">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelBookingDetail" name="HotelBookingDetailRequest" message="tns:HotelBookingDetailRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelBookingDetailResponse" name="HotelBookingDetailResponse" message="tns:HotelBookingDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateInvoice">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/GenerateInvoice" name="GenerateInvoiceRequest" message="tns:GenerateInvoiceRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/GenerateInvoiceResponse" name="GenerateInvoiceResponse" message="tns:GenerateInvoiceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Amendment">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/Amendment" name="AmendmentRequest" message="tns:AmendmentRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/AmendmentResponse" name="AmendmentResponse" message="tns:AmendmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelCancel">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelCancel" name="HotelCancelRequest" message="tns:HotelCancelRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelCancelResponse" name="HotelCancelResponse" message="tns:HotelCancelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CountryList">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/CountryList" name="CountryListRequest" message="tns:CountryListRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/CountryListResponse" name="CountryListResponse" message="tns:CountryListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DestinationCityList">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/DestinationCityList" name="DestinationCityListRequest" message="tns:DestinationCityListRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/DestinationCityListResponse" name="DestinationCityListResponse" message="tns:DestinationCityListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TopDestinations">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/TopDestinations" name="TopDestinationsRequest" message="tns:TopDestinationsRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/TopDestinationsResponse" name="TopDestinationsResponse" message="tns:TopDestinationsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelDetails">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelDetails" name="HotelDetailsRequest" message="tns:HotelDetailsRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelDetailsResponse" name="HotelDetailsResponse" message="tns:HotelDetailsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelCodeList">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelCodes" name="HotelCodesRequest" message="tns:HotelCodesRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelCodeListResponse" name="HotelCodesResponse" message="tns:HotelCodesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelSearchWithRooms">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelSearchWithRooms" name="HotelSearchWithRoomsRequest" message="tns:HotelSearchWithRoomsRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelSearchWithRoomsResponse" name="HotelSearchWithRoomsResponse" message="tns:HotelSearchWithRoomsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelBookingDetailBasedOnDate">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/HotelBookingDetailBasedOnDate" name="HotelBookingDetailBasedOnDateRequest" message="tns:HotelBookingDetailBasedOnDateRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/HotelBookingDetailBasedOnDateResponse" name="HotelBookingDetailBasedOnDateResponse" message="tns:HotelBookingDetailBasedOnDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GiataHotelCodeList">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/GiataHotelCodes" name="GiataHotelCodesRequest" message="tns:GiataHotelCodesRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/GiataHotelCodeListResponse" name="GiataHotelCodesResponse" message="tns:GiataHotelCodesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TBOHotelCodeList">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/TBOHotelCodes" name="TBOHotelCodesRequest" message="tns:TBOHotelCodesRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/TBOHotelCodeListResponse" name="TBOHotelCodesResponse" message="tns:TBOHotelCodesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="TagInfo">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/TagInfos" name="TagInfoRequest" message="tns:TagInfoRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/TagInfoResponse" name="TagInfoResponse" message="tns:TagInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CityWiseNotification">
+      <wsdl:input wsaw:Action="http://TekTravel/HotelBookingApi/CityWiseNotification" name="CityWiseNotificationRequest" message="tns:CityWiseNotificationRequest" />
+      <wsdl:output wsaw:Action="http://TekTravel/HotelBookingApi/IHotelService/CityWiseNotificationResponse" name="CityWiseNotificationResponse" message="tns:CityWiseNotificationResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

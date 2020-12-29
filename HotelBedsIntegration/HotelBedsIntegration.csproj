@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A666430-7139-4AC3-818B-BDD48FEC09B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HotelBedsIntegration</RootNamespace>
+    <AssemblyName>HotelBedsIntegration</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\graphicqltest\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\graphicqltest\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.1.1\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Controller\Booking.cs" />
+    <Compile Include="Controller\CancellationBooking.cs" />
+    <Compile Include="Controller\CheckAvailability.cs" />
+    <Compile Include="Controller\SearchHotel.cs" />
+    <Compile Include="DBMapper\AvailabilityMapping.cs" />
+    <Compile Include="DBMapper\BookingMapping.cs" />
+    <Compile Include="DBMapper\SearchMapping.cs" />
+    <Compile Include="Helper\LogData.cs" />
+    <Compile Include="Management\ConfirmationManager.cs" />
+    <Compile Include="Management\HBSearchManager.cs" />
+    <Compile Include="Models\AvailabilityReq.cs" />
+    <Compile Include="Models\AvailabilityRequest.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AvailabilityRes.cs" />
+    <Compile Include="Models\AvailabilityResponse.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookingConfirmation.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookingReq.cs" />
+    <Compile Include="Models\BookingRequest.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookingRes.cs" />
+    <Compile Include="Models\BookingRoom.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookingStatus.cs" />
+    <Compile Include="Models\Cancellation\CancellationBooking.cs" />
+    <Compile Include="Models\HotelBeds.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelBeds.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelBeds.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelBeds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelBeds.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListRoomsRate.cs" />
+    <Compile Include="Models\Pax.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PolicyBooking.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestPAX.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomPolicy.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoomTax.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchHotelData.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchReq.cs" />
+    <Compile Include="Models\SearchRequest.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchResponse.cs" />
+    <Compile Include="Models\SearchRoom.cs">
+      <DependentUpon>HotelBeds.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AvailabiltyService.cs" />
+    <Compile Include="Services\BOOKINGCANCELLATION.cs" />
+    <Compile Include="Services\BookingService.cs" />
+    <Compile Include="Services\HotelSearch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Availability\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Models\HotelBeds.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotelBeds.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\HotelBeds.edmx.diagram">
+      <DependentUpon>HotelBeds.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hotels.Common\Hotels.Common.csproj">
+      <Project>{17B259A8-71F0-47E3-899D-D0277EF74FF9}</Project>
+      <Name>Hotels.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IntegrationTotalStay\IntegrationTotalStay.csproj">
+      <Project>{412BCF5D-D109-42C7-9AFD-40810DE8B6B7}</Project>
+      <Name>IntegrationTotalStay</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\HotelBeds.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelBeds.edmx</DependentUpon>
+      <LastGenOutput>HotelBeds.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HotelBeds.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelBeds.edmx</DependentUpon>
+      <LastGenOutput>HotelBeds.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

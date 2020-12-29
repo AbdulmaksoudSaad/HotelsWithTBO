@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SearchDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CheckAvailability">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sID" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="OldCost" Type="float" />
+          <Property Name="NewCost" Type="float" />
+          <Property Name="CreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="HotelPackage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageNum" Type="int" />
+          <Property Name="Hotelid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provider" Type="int" />
+          <Property Name="Session" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="PricePerNight" Type="float" />
+          <Property Name="PricePerAllNight" Type="float" />
+          <Property Name="Currency" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ProviderSessions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PSession" Type="varchar(max)" />
+          <Property Name="PID" Type="int" />
+          <Property Name="SearchId" Type="varchar(max)" />
+    <Property Name="Adult" Type="int" />
+    <Property Name="Child" Type="int" />
+    <Property Name="RoomRef" Type="int" />
+    <Property Name="ChildAges" Type="varchar" MaxLength="50"/>
+        </EntityType>
+        <EntityType Name="SearchCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cityName" Type="varchar" MaxLength="50" />
+          <Property Name="dateFrom" Type="datetime" />
+          <Property Name="dateTo" Type="datetime" />
+          <Property Name="duration" Type="int" />
+          <Property Name="roomNo" Type="int" />
+          <Property Name="passengerNationality" Type="varchar" MaxLength="50" />
+          <Property Name="pos" Type="nvarchar" MaxLength="50" />
+          <Property Name="sID" Type="varchar" MaxLength="255" />
+          <Property Name="sessionCreatedAt" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="currency" Type="nvarchar" MaxLength="50" />
+          <Property Name="language" Type="nvarchar" MaxLength="50" />
+          <Property Name="source" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SearchHotelResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sID" Type="nvarchar" MaxLength="255" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProviderID" Type="int" />
+          <Property Name="ProviderHotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProviderHotelId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostPrice" Type="float" />
+          <Property Name="SellPrice" Type="float" />
+          <Property Name="SellCurrency" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarkUpID" Type="int" />
+          <Property Name="MarkUpVal" Type="float" />
+          <Property Name="DiscountID" Type="int" />
+          <Property Name="DiscountVal" Type="float" />
+          <Property Name="CreateAt" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="ResIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="SearchRoomData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sID" Type="nvarchar" MaxLength="255" />
+          <Property Name="roomNo" Type="int" />
+          <Property Name="adultNo" Type="int" />
+          <Property Name="childernNo" Type="int" />
+          <Property Name="childAge" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SearchRoomResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sID" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProviderId" Type="int" />
+          <Property Name="HotelCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomReference" Type="nvarchar(max)" />
+          <Property Name="costPrice" Type="float" />
+          <Property Name="SellPrice" Type="float" />
+          <Property Name="SellCurrency" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarkupId" Type="int" />
+          <Property Name="MarkupVal" Type="float" />
+          <Property Name="DiscountId" Type="int" />
+          <Property Name="DiscountVal" Type="float" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="meal" Type="nvarchar" MaxLength="255" />
+          <Property Name="PaxSQty" Type="int" />
+          <Property Name="roomType" Type="nvarchar" MaxLength="255" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Adults" Type="int" />
+          <Property Name="Childern" Type="int" />
+          <Property Name="MealId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsRefundable" Type="bit" />
+          <Property Name="ProviderBookingKey" Type="nvarchar(max)" />
+          <Property Name="PackageNo" Type="int" />
+          <Property Name="rateClass" Type="nvarchar(max)" />
+          <Property Name="rateType" Type="nvarchar" MaxLength="250" />
+          <Property Name="boardCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="childrenAges" Type="nvarchar" MaxLength="50" />
+          <Property Name="paymentType" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SearchSessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Session_Id" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Supplements">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SID" Type="varchar(max)" />
+          <Property Name="HotelCode" Type="varchar" MaxLength="50" />
+          <Property Name="RoomIndex" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="IsSelected" Type="bit" />
+          <Property Name="ChargeType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="SaveRoomResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SaveSearchResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SaveSearchResultForChannel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SearchDBModelStoreContainer">
+          <EntitySet Name="CheckAvailability" EntityType="Self.CheckAvailability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelPackage" EntityType="Self.HotelPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProviderSessions" EntityType="Self.ProviderSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchCriteria" EntityType="Self.SearchCriteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchHotelResult" EntityType="Self.SearchHotelResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchRoomData" EntityType="Self.SearchRoomData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchRoomResult" EntityType="Self.SearchRoomResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchSessions" EntityType="Self.SearchSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplements" EntityType="Self.Supplements" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SearchDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CheckAvailability">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OldCost" Type="Double" />
+          <Property Name="NewCost" Type="Double" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="HotelPackage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageNum" Type="Int32" />
+          <Property Name="Hotelid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provider" Type="Int32" />
+          <Property Name="Session" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PricePerNight" Type="Double" />
+          <Property Name="PricePerAllNight" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SearchCriteria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateFrom" Type="DateTime" Precision="3" />
+          <Property Name="dateTo" Type="DateTime" Precision="3" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="roomNo" Type="Int32" />
+          <Property Name="passengerNationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sessionCreatedAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SearchHotelResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderID" Type="Int32" />
+          <Property Name="ProviderHotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderHotelId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CostPrice" Type="Double" />
+          <Property Name="SellPrice" Type="Double" />
+          <Property Name="SellCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarkUpID" Type="Int32" />
+          <Property Name="MarkUpVal" Type="Double" />
+          <Property Name="DiscountID" Type="Int32" />
+          <Property Name="DiscountVal" Type="Double" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ResIndex" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SearchRoomData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="roomNo" Type="Int32" />
+          <Property Name="adultNo" Type="Int32" />
+          <Property Name="childernNo" Type="Int32" />
+          <Property Name="childAge" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SearchRoomResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderId" Type="Int32" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomReference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="costPrice" Type="Double" />
+          <Property Name="SellPrice" Type="Double" />
+          <Property Name="SellCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarkupId" Type="Int32" />
+          <Property Name="MarkupVal" Type="Double" />
+          <Property Name="DiscountId" Type="Int32" />
+          <Property Name="DiscountVal" Type="Double" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="meal" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PaxSQty" Type="Int32" />
+          <Property Name="roomType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RoomName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Adults" Type="Int32" />
+          <Property Name="Childern" Type="Int32" />
+          <Property Name="MealId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsRefundable" Type="Boolean" />
+          <Property Name="ProviderBookingKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PackageNo" Type="Int32" />
+          <Property Name="rateClass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rateType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="boardCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="childrenAges" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="paymentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SearchSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Session_Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SearchDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CheckAvailabilities" EntityType="Self.CheckAvailability" />
+          <EntitySet Name="HotelPackages" EntityType="Self.HotelPackage" />
+          <EntitySet Name="SearchCriterias" EntityType="Self.SearchCriteria" />
+          <EntitySet Name="SearchHotelResults" EntityType="Self.SearchHotelResult" />
+          <EntitySet Name="SearchRoomDatas" EntityType="Self.SearchRoomData" />
+          <EntitySet Name="SearchRoomResults" EntityType="Self.SearchRoomResult" />
+          <EntitySet Name="SearchSessions" EntityType="Self.SearchSession" />
+          <EntitySet Name="Supplements" EntityType="SearchDBModel.Supplement" />
+          <FunctionImport Name="SaveRoomResult" />
+          <FunctionImport Name="SaveSearchResult" />
+          <FunctionImport Name="SaveSearchResultForChannel" />
+          <EntitySet Name="ProviderSessions" EntityType="SearchDBModel.ProviderSession" />
+        </EntityContainer>
+        <EntityType Name="Supplement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HotelCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomIndex" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="IsSelected" Type="Boolean" />
+          <Property Name="ChargeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProviderSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PSession" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PID" Type="Int32" />
+          <Property Name="SearchId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+      <Property Name="Adult" Type="Int32" />
+      <Property Name="Child" Type="Int32" />
+
+      <Property Name="RoomRef" Type="Int32" />
+     <Property Name="ChildAges" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SearchDBModelStoreContainer" CdmEntityContainer="SearchDBEntities">
+          <EntitySetMapping Name="CheckAvailabilities">
+            <EntityTypeMapping TypeName="SearchDBModel.CheckAvailability">
+              <MappingFragment StoreEntitySet="CheckAvailability">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sID" ColumnName="sID" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="OldCost" ColumnName="OldCost" />
+                <ScalarProperty Name="NewCost" ColumnName="NewCost" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelPackages">
+            <EntityTypeMapping TypeName="SearchDBModel.HotelPackage">
+              <MappingFragment StoreEntitySet="HotelPackage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="PackageNum" ColumnName="PackageNum" />
+                <ScalarProperty Name="Hotelid" ColumnName="Hotelid" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Session" ColumnName="Session" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="PricePerNight" ColumnName="PricePerNight" />
+                <ScalarProperty Name="PricePerAllNight" ColumnName="PricePerAllNight" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchCriterias">
+            <EntityTypeMapping TypeName="SearchDBModel.SearchCriteria">
+              <MappingFragment StoreEntitySet="SearchCriteria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="dateFrom" ColumnName="dateFrom" />
+                <ScalarProperty Name="dateTo" ColumnName="dateTo" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+                <ScalarProperty Name="passengerNationality" ColumnName="passengerNationality" />
+                <ScalarProperty Name="pos" ColumnName="pos" />
+                <ScalarProperty Name="sID" ColumnName="sID" />
+                <ScalarProperty Name="sessionCreatedAt" ColumnName="sessionCreatedAt" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="source" ColumnName="source" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchHotelResults">
+            <EntityTypeMapping TypeName="SearchDBModel.SearchHotelResult">
+              <MappingFragment StoreEntitySet="SearchHotelResult">
+                <ScalarProperty Name="ResIndex" ColumnName="ResIndex" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sID" ColumnName="sID" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="ProviderHotelCode" ColumnName="ProviderHotelCode" />
+                <ScalarProperty Name="ProviderHotelId" ColumnName="ProviderHotelId" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="SellCurrency" ColumnName="SellCurrency" />
+                <ScalarProperty Name="MarkUpID" ColumnName="MarkUpID" />
+                <ScalarProperty Name="MarkUpVal" ColumnName="MarkUpVal" />
+                <ScalarProperty Name="DiscountID" ColumnName="DiscountID" />
+                <ScalarProperty Name="DiscountVal" ColumnName="DiscountVal" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchRoomDatas">
+            <EntityTypeMapping TypeName="SearchDBModel.SearchRoomData">
+              <MappingFragment StoreEntitySet="SearchRoomData">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="sID" ColumnName="sID" />
+                <ScalarProperty Name="roomNo" ColumnName="roomNo" />
+                <ScalarProperty Name="adultNo" ColumnName="adultNo" />
+                <ScalarProperty Name="childernNo" ColumnName="childernNo" />
+                <ScalarProperty Name="childAge" ColumnName="childAge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchRoomResults">
+            <EntityTypeMapping TypeName="SearchDBModel.SearchRoomResult">
+              <MappingFragment StoreEntitySet="SearchRoomResult">
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+                <ScalarProperty Name="childrenAges" ColumnName="childrenAges" />
+                <ScalarProperty Name="boardCode" ColumnName="boardCode" />
+                <ScalarProperty Name="rateType" ColumnName="rateType" />
+                <ScalarProperty Name="rateClass" ColumnName="rateClass" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sID" ColumnName="sID" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="RoomReference" ColumnName="RoomReference" />
+                <ScalarProperty Name="costPrice" ColumnName="costPrice" />
+                <ScalarProperty Name="SellPrice" ColumnName="SellPrice" />
+                <ScalarProperty Name="SellCurrency" ColumnName="SellCurrency" />
+                <ScalarProperty Name="MarkupId" ColumnName="MarkupId" />
+                <ScalarProperty Name="MarkupVal" ColumnName="MarkupVal" />
+                <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
+                <ScalarProperty Name="DiscountVal" ColumnName="DiscountVal" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="meal" ColumnName="meal" />
+                <ScalarProperty Name="PaxSQty" ColumnName="PaxSQty" />
+                <ScalarProperty Name="roomType" ColumnName="roomType" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="Adults" ColumnName="Adults" />
+                <ScalarProperty Name="Childern" ColumnName="Childern" />
+                <ScalarProperty Name="MealId" ColumnName="MealId" />
+                <ScalarProperty Name="IsRefundable" ColumnName="IsRefundable" />
+                <ScalarProperty Name="ProviderBookingKey" ColumnName="ProviderBookingKey" />
+                <ScalarProperty Name="PackageNo" ColumnName="PackageNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchSessions">
+            <EntityTypeMapping TypeName="SearchDBModel.SearchSession">
+              <MappingFragment StoreEntitySet="SearchSessions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Session_Id" ColumnName="Session_Id" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplements">
+            <EntityTypeMapping TypeName="SearchDBModel.Supplement">
+              <MappingFragment StoreEntitySet="Supplements">
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="RoomIndex" ColumnName="RoomIndex" />
+                <ScalarProperty Name="HotelCode" ColumnName="HotelCode" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SaveRoomResult" FunctionName="SearchDBModel.Store.SaveRoomResult" />
+          <FunctionImportMapping FunctionImportName="SaveSearchResult" FunctionName="SearchDBModel.Store.SaveSearchResult" />
+          <FunctionImportMapping FunctionImportName="SaveSearchResultForChannel" FunctionName="SearchDBModel.Store.SaveSearchResultForChannel" />
+          <EntitySetMapping Name="ProviderSessions">
+            <EntityTypeMapping TypeName="SearchDBModel.ProviderSession">
+              <MappingFragment StoreEntitySet="ProviderSessions">
+                <ScalarProperty Name="SearchId" ColumnName="SearchId" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="PSession" ColumnName="PSession" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+         <ScalarProperty Name="Adult" ColumnName="Adult" />
+         <ScalarProperty Name="Child" ColumnName="Child" />
+
+         <ScalarProperty Name="RoomRef" ColumnName="RoomRef" />
+         <ScalarProperty Name="ChildAges" ColumnName="ChildAges" />
+
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1926780B-7F57-4B6B-9C25-907254071FA6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TBOIntegration</RootNamespace>
+    <AssemblyName>TBOIntegration</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Helper\ProviderLogger.cs" />
+    <Compile Include="Management\TBOConfirmationManager.cs" />
+    <Compile Include="Management\TBOSearchManager.cs" />
+    <Compile Include="Mapper\BookMapper.cs" />
+    <Compile Include="Mapper\RoomMapper.cs" />
+    <Compile Include="Mapper\SearchMapper.cs" />
+    <Compile Include="Models\Book\Req\HotelBookReq.cs" />
+    <Compile Include="Models\Book\Rsp\HotelBookResp.cs" />
+    <Compile Include="Models\Search\CommonAttr\RoomGuest.cs" />
+    <Compile Include="Models\Search\Req\SearchReq.cs" />
+    <Compile Include="Models\Search\Rsp\HotelInfo.cs" />
+    <Compile Include="Models\Search\Rsp\HotelResult.cs" />
+    <Compile Include="Models\Search\Rsp\MinHotelPrice.cs" />
+    <Compile Include="Models\Search\Rsp\SearchResp.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AvailablityPricingService.cs" />
+    <Compile Include="Services\BookDetail.cs" />
+    <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\CancelationService.cs" />
+    <Compile Include="Services\RoomAvailabiltyService.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\TBOCredentials.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hotels.BLL\Hotels.BLL.csproj">
+      <Project>{05748995-11ac-4e17-91eb-ad509eb21f13}</Project>
+      <Name>Hotels.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotels.Common\Hotels.Common.csproj">
+      <Project>{17B259A8-71F0-47E3-899D-D0277EF74FF9}</Project>
+      <Name>Hotels.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotels.DAL\Hotels.DAL.csproj">
+      <Project>{29921142-2509-4B19-9A10-FED83F50ACC3}</Project>
+      <Name>Hotels.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotels.ErrorHandling\Hotels.ErrorHandling.csproj">
+      <Project>{68812E43-8F1E-444E-AC81-FBF147C494D8}</Project>
+      <Name>Hotels.ErrorHandling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TBO.WSDL\TBO.WSDL.csproj">
+      <Project>{974D9C5E-EEB7-42D1-8D1B-03DF26AE69DB}</Project>
+      <Name>TBO.WSDL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
